@@ -4,476 +4,243 @@
 <meta charset="UTF-8"/>
 <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 <title>Narayana Engineering College — Gudur</title>
-<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700;900&family=DM+Sans:wght@300;400;500;600&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700;900&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet"/>
 <style>
-:root {
-  --navy: #0D1B2A;
-  --teal: #0D9488;
-  --teal-light: #14B8A6;
-  --teal-pale: #CCFBF1;
-  --gold: #F59E0B;
-  --white: #FFFFFF;
-  --off-white: #F8FAFC;
-  --gray: #64748B;
-  --light-gray: #E2E8F0;
-  --dark-text: #1E293B;
-  --card-bg: #FFFFFF;
-  --shadow: 0 4px 24px rgba(13,27,42,0.10);
-  --shadow-lg: 0 12px 48px rgba(13,27,42,0.18);
+:root{
+  --navy:#0D1B2A;--teal:#0D9488;--teal-light:#14B8A6;--teal-pale:#CCFBF1;
+  --gold:#F59E0B;--white:#FFFFFF;--off-white:#F8FAFC;--gray:#64748B;
+  --light-gray:#E2E8F0;--dark-text:#1E293B;
+  --shadow:0 4px 24px rgba(13,27,42,.10);--shadow-lg:0 12px 48px rgba(13,27,42,.18);
+  --nav-h:64px;
 }
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:'DM Sans',sans-serif;background:var(--off-white);color:var(--dark-text);min-height:100vh}
 
-*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+/* NAV */
+.nav{position:fixed;top:0;left:0;right:0;z-index:1000;background:var(--navy);height:var(--nav-h);display:flex;align-items:center;justify-content:space-between;padding:0 1.5rem;box-shadow:0 2px 20px rgba(0,0,0,.3)}
+.nav-brand{display:flex;align-items:center;gap:.6rem;cursor:pointer;flex-shrink:0}
+.nav-logo{width:38px;height:38px;background:var(--teal);border-radius:8px;display:flex;align-items:center;justify-content:center;font-family:'Playfair Display',serif;font-weight:900;color:white;font-size:17px}
+.nav-title{font-family:'Playfair Display',serif;font-weight:700;color:white;font-size:.95rem;line-height:1.2}
+.nav-title span{display:block;font-size:.62rem;font-family:'DM Sans',sans-serif;font-weight:400;color:var(--teal-light);letter-spacing:.07em;text-transform:uppercase}
+.nav-links{display:flex;gap:.1rem;align-items:center}
+.nav-link{background:none;border:none;cursor:pointer;color:#94A3B8;font-family:'DM Sans',sans-serif;font-size:.84rem;padding:.45rem .72rem;border-radius:6px;transition:all .2s;font-weight:500;white-space:nowrap}
+.nav-link:hover,.nav-link.active{background:rgba(13,148,136,.18);color:var(--teal-light)}
+.nav-chat-btn{background:var(--teal);border:none;cursor:pointer;color:white;font-family:'DM Sans',sans-serif;font-size:.84rem;padding:.45rem .95rem;border-radius:8px;transition:all .2s;font-weight:600;display:flex;align-items:center;gap:.35rem;margin-left:.35rem;white-space:nowrap}
+.nav-chat-btn:hover{background:var(--teal-light);transform:translateY(-1px)}
+.hamburger{display:none;background:none;border:none;cursor:pointer;flex-direction:column;gap:5px;padding:.4rem;margin-left:.5rem}
+.hamburger span{display:block;width:22px;height:2px;background:#94A3B8;border-radius:2px;transition:all .3s}
+.hamburger.open span:nth-child(1){transform:rotate(45deg) translate(5px,5px)}
+.hamburger.open span:nth-child(2){opacity:0}
+.hamburger.open span:nth-child(3){transform:rotate(-45deg) translate(5px,-5px)}
+.mobile-menu{display:none;position:fixed;top:var(--nav-h);left:0;right:0;z-index:999;background:var(--navy);border-top:1px solid rgba(255,255,255,.08);flex-direction:column;padding:.75rem 1rem 1rem;gap:.2rem;box-shadow:0 8px 24px rgba(0,0,0,.3)}
+.mobile-menu.open{display:flex}
+.mobile-menu .nav-link{padding:.65rem .85rem;border-radius:8px;font-size:.9rem;text-align:left}
+.mobile-menu .nav-chat-btn{justify-content:center;margin:0;margin-top:.3rem;padding:.65rem}
 
-html { scroll-behavior: smooth; }
+/* PAGES */
+.page{display:none;padding-top:var(--nav-h);min-height:100vh}
+.page.active{display:block}
 
-body {
-  font-family: 'DM Sans', sans-serif;
-  background: var(--off-white);
-  color: var(--dark-text);
-  min-height: 100vh;
-}
+/* HERO */
+.hero{background:var(--navy);position:relative;overflow:hidden;padding:4rem 1.5rem 3.5rem}
+.hero::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse at 70% 50%,rgba(13,148,136,.18) 0%,transparent 65%),radial-gradient(ellipse at 10% 80%,rgba(245,158,11,.08) 0%,transparent 50%)}
+.hero-grid{max-width:1200px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr;gap:3.5rem;align-items:center;position:relative;z-index:1}
+.hero-badge{display:inline-flex;align-items:center;gap:.5rem;background:rgba(13,148,136,.15);border:1px solid rgba(13,148,136,.3);color:var(--teal-light);padding:.3rem .8rem;border-radius:999px;font-size:.75rem;font-weight:600;letter-spacing:.06em;text-transform:uppercase;margin-bottom:1.25rem}
+.hero-title{font-family:'Playfair Display',serif;font-weight:900;color:white;font-size:clamp(1.9rem,3.5vw,3rem);line-height:1.15;margin-bottom:.9rem}
+.hero-title em{color:var(--teal-light);font-style:normal}
+.hero-sub{color:#94A3B8;font-size:.95rem;line-height:1.7;margin-bottom:1.75rem}
+.hero-btns{display:flex;gap:.65rem;flex-wrap:wrap}
+.btn-primary{background:var(--teal);color:white;border:none;cursor:pointer;padding:.7rem 1.4rem;border-radius:8px;font-weight:600;font-size:.9rem;font-family:'DM Sans',sans-serif;transition:all .2s}
+.btn-primary:hover{background:var(--teal-light);transform:translateY(-2px);box-shadow:0 8px 24px rgba(13,148,136,.35)}
+.btn-outline{background:transparent;color:white;border:1px solid rgba(255,255,255,.25);cursor:pointer;padding:.7rem 1.4rem;border-radius:8px;font-weight:500;font-size:.9rem;font-family:'DM Sans',sans-serif;transition:all .2s}
+.btn-outline:hover{border-color:var(--teal-light);color:var(--teal-light)}
+.hero-stats{display:grid;grid-template-columns:1fr 1fr;gap:.85rem}
+.stat-card{background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.1);border-radius:12px;padding:1.1rem;transition:all .3s}
+.stat-card:hover{background:rgba(13,148,136,.15);border-color:rgba(13,148,136,.4);transform:translateY(-2px)}
+.stat-num{font-family:'Playfair Display',serif;font-weight:900;font-size:2rem;color:var(--teal-light);line-height:1}
+.stat-label{color:#94A3B8;font-size:.78rem;margin-top:.3rem;font-weight:500}
 
-/* ── NAV ── */
-.nav {
-  position: fixed; top: 0; left: 0; right: 0; z-index: 1000;
-  background: var(--navy);
-  display: flex; align-items: center; justify-content: space-between;
-  padding: 0 2rem; height: 64px;
-  box-shadow: 0 2px 20px rgba(0,0,0,0.3);
-}
-.nav-brand {
-  display: flex; align-items: center; gap: 0.75rem; cursor: pointer;
-}
-.nav-logo {
-  width: 40px; height: 40px; background: var(--teal);
-  border-radius: 8px; display: flex; align-items: center; justify-content: center;
-  font-family: 'Playfair Display', serif; font-weight: 900; color: white; font-size: 18px;
-}
-.nav-title {
-  font-family: 'Playfair Display', serif; font-weight: 700;
-  color: white; font-size: 1.05rem; line-height: 1.2;
-}
-.nav-title span { display: block; font-size: 0.7rem; font-family: 'DM Sans', sans-serif;
-  font-weight: 400; color: var(--teal-light); letter-spacing: 0.08em; text-transform: uppercase; }
-.nav-links { display: flex; gap: 0.25rem; align-items: center; }
-.nav-link {
-  background: none; border: none; cursor: pointer;
-  color: #94A3B8; font-family: 'DM Sans', sans-serif; font-size: 0.88rem;
-  padding: 0.5rem 0.85rem; border-radius: 6px; transition: all 0.2s;
-  font-weight: 500;
-}
-.nav-link:hover, .nav-link.active { background: rgba(13,148,136,0.15); color: var(--teal-light); }
-.nav-chat-btn {
-  background: var(--teal); border: none; cursor: pointer;
-  color: white; font-family: 'DM Sans', sans-serif; font-size: 0.88rem;
-  padding: 0.5rem 1.1rem; border-radius: 8px; transition: all 0.2s;
-  font-weight: 600; display: flex; align-items: center; gap: 0.4rem; margin-left: 0.5rem;
-}
-.nav-chat-btn:hover { background: var(--teal-light); transform: translateY(-1px); }
+.info-strip{background:var(--teal);padding:.65rem 1.5rem;display:flex;justify-content:center;gap:2rem;flex-wrap:wrap}
+.info-item{color:white;font-size:.8rem;font-weight:500;display:flex;align-items:center;gap:.35rem}
+.section{padding:3.5rem 1.5rem;max-width:1200px;margin:0 auto}
+.section-header{text-align:center;margin-bottom:2.5rem}
+.section-tag{display:inline-block;background:var(--teal-pale);color:var(--teal);font-size:.72rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;padding:.25rem .75rem;border-radius:999px;margin-bottom:.6rem}
+.section-title{font-family:'Playfair Display',serif;font-weight:800;font-size:clamp(1.6rem,2.5vw,2.3rem);color:var(--navy);line-height:1.2}
+.section-sub{color:var(--gray);margin-top:.45rem;font-size:.95rem;line-height:1.6}
 
-/* ── PAGES ── */
-.page { display: none; padding-top: 64px; min-height: 100vh; }
-.page.active { display: block; }
+.about-grid{display:grid;grid-template-columns:1fr 1fr;gap:3rem;align-items:start}
+.about-text p{color:var(--gray);line-height:1.8;margin-bottom:.9rem;font-size:.92rem}
+.highlight-list{list-style:none;margin-top:1.25rem}
+.highlight-list li{display:flex;align-items:flex-start;gap:.7rem;padding:.55rem 0;border-bottom:1px solid var(--light-gray);font-size:.9rem}
+.highlight-list li::before{content:'';width:7px;height:7px;background:var(--teal);border-radius:50%;flex-shrink:0;margin-top:6px}
+.info-cards{display:flex;flex-direction:column;gap:.85rem}
+.info-card{background:white;border-radius:12px;padding:1.1rem 1.35rem;border-left:4px solid var(--teal);box-shadow:var(--shadow);transition:transform .2s}
+.info-card:hover{transform:translateX(4px)}
+.info-card h4{font-weight:700;color:var(--navy);margin-bottom:.2rem;font-size:.9rem}
+.info-card p{font-size:.82rem;color:var(--gray)}
 
-/* ── HOME ── */
-.hero {
-  background: var(--navy);
-  position: relative; overflow: hidden;
-  padding: 5rem 2rem 4rem;
-}
-.hero::before {
-  content: ''; position: absolute; inset: 0;
-  background: radial-gradient(ellipse at 70% 50%, rgba(13,148,136,0.18) 0%, transparent 65%),
-              radial-gradient(ellipse at 10% 80%, rgba(245,158,11,0.08) 0%, transparent 50%);
-}
-.hero-grid {
-  max-width: 1200px; margin: 0 auto;
-  display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: center;
-  position: relative; z-index: 1;
-}
-.hero-badge {
-  display: inline-flex; align-items: center; gap: 0.5rem;
-  background: rgba(13,148,136,0.15); border: 1px solid rgba(13,148,136,0.3);
-  color: var(--teal-light); padding: 0.35rem 0.85rem; border-radius: 999px;
-  font-size: 0.78rem; font-weight: 600; letter-spacing: 0.06em; text-transform: uppercase;
-  margin-bottom: 1.5rem;
-}
-.hero-title {
-  font-family: 'Playfair Display', serif; font-weight: 900;
-  color: white; font-size: clamp(2.2rem, 4vw, 3.2rem); line-height: 1.15;
-  margin-bottom: 1rem;
-}
-.hero-title em { color: var(--teal-light); font-style: normal; }
-.hero-sub {
-  color: #94A3B8; font-size: 1rem; line-height: 1.7; margin-bottom: 2rem;
-}
-.hero-btns { display: flex; gap: 0.75rem; flex-wrap: wrap; }
-.btn-primary {
-  background: var(--teal); color: white; border: none; cursor: pointer;
-  padding: 0.75rem 1.5rem; border-radius: 8px; font-weight: 600; font-size: 0.92rem;
-  font-family: 'DM Sans', sans-serif; transition: all 0.2s;
-}
-.btn-primary:hover { background: var(--teal-light); transform: translateY(-2px); box-shadow: 0 8px 24px rgba(13,148,136,0.35); }
-.btn-outline {
-  background: transparent; color: white; border: 1px solid rgba(255,255,255,0.25);
-  cursor: pointer; padding: 0.75rem 1.5rem; border-radius: 8px;
-  font-weight: 500; font-size: 0.92rem; font-family: 'DM Sans', sans-serif; transition: all 0.2s;
-}
-.btn-outline:hover { border-color: var(--teal-light); color: var(--teal-light); }
+.dept-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:1.1rem}
+.dept-card{background:white;border-radius:14px;padding:1.35rem;box-shadow:var(--shadow);border:1px solid var(--light-gray);text-align:center;transition:all .3s;cursor:pointer}
+.dept-card:hover{transform:translateY(-4px);box-shadow:var(--shadow-lg);border-color:var(--teal-light)}
+.dept-icon{width:48px;height:48px;background:var(--navy);border-radius:12px;display:flex;align-items:center;justify-content:center;font-size:1.4rem;margin:0 auto .85rem}
+.dept-card h4{font-weight:700;color:var(--navy);font-size:.85rem;margin-bottom:.2rem}
+.dept-card p{font-size:.75rem;color:var(--gray)}
 
-.hero-stats {
-  display: grid; grid-template-columns: 1fr 1fr; gap: 1rem;
-}
-.stat-card {
-  background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1);
-  border-radius: 12px; padding: 1.25rem; backdrop-filter: blur(10px);
-  transition: all 0.3s;
-}
-.stat-card:hover { background: rgba(13,148,136,0.15); border-color: rgba(13,148,136,0.4); transform: translateY(-2px); }
-.stat-num {
-  font-family: 'Playfair Display', serif; font-weight: 900;
-  font-size: 2.2rem; color: var(--teal-light); line-height: 1;
-}
-.stat-label { color: #94A3B8; font-size: 0.82rem; margin-top: 0.3rem; font-weight: 500; }
+.quick-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:1.1rem}
+.quick-card{background:white;border-radius:14px;padding:1.35rem 1rem;box-shadow:var(--shadow);text-align:center;cursor:pointer;border:2px solid transparent;transition:all .25s}
+.quick-card:hover{border-color:var(--teal);transform:translateY(-4px);box-shadow:var(--shadow-lg)}
+.quick-card .qicon{font-size:2rem;margin-bottom:.6rem}
+.quick-card h4{font-weight:700;color:var(--navy);font-size:.88rem;margin-bottom:.25rem}
+.quick-card p{font-size:.75rem;color:var(--gray)}
 
-/* Info strip */
-.info-strip {
-  background: var(--teal); padding: 0.75rem 2rem;
-  display: flex; justify-content: center; gap: 3rem; flex-wrap: wrap;
-}
-.info-item { color: white; font-size: 0.83rem; font-weight: 500; display: flex; align-items: center; gap: 0.4rem; }
+.footer{background:var(--navy);color:#94A3B8;padding:2.5rem 1.5rem 1.25rem;margin-top:2rem}
+.footer-grid{max-width:1200px;margin:0 auto;display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:2rem;margin-bottom:2rem}
+.footer h4{color:white;font-weight:700;margin-bottom:.85rem;font-size:.9rem}
+.footer p,.footer li{font-size:.8rem;line-height:1.8}
+.footer ul{list-style:none}
+.footer ul li{cursor:pointer;transition:color .2s}
+.footer ul li:hover{color:var(--teal-light)}
+.footer-bottom{max-width:1200px;margin:0 auto;padding-top:1.25rem;border-top:1px solid rgba(255,255,255,.08);text-align:center;font-size:.75rem}
 
-/* About section */
-.section { padding: 4rem 2rem; max-width: 1200px; margin: 0 auto; }
-.section-header { text-align: center; margin-bottom: 3rem; }
-.section-tag {
-  display: inline-block; background: var(--teal-pale); color: var(--teal);
-  font-size: 0.75rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase;
-  padding: 0.3rem 0.8rem; border-radius: 999px; margin-bottom: 0.75rem;
-}
-.section-title {
-  font-family: 'Playfair Display', serif; font-weight: 800;
-  font-size: clamp(1.8rem, 3vw, 2.5rem); color: var(--navy); line-height: 1.2;
-}
-.section-sub { color: var(--gray); margin-top: 0.5rem; font-size: 1rem; line-height: 1.6; }
+/* PAGE HERO */
+.page-hero{background:var(--navy);padding:2.5rem 1.5rem 2rem;position:relative;overflow:hidden}
+.page-hero::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse at 80% 50%,rgba(13,148,136,.2) 0%,transparent 60%)}
+.page-hero-inner{max-width:1200px;margin:0 auto;position:relative;z-index:1}
+.page-hero h1{font-family:'Playfair Display',serif;font-weight:800;color:white;font-size:clamp(1.6rem,3vw,2.2rem);margin-bottom:.4rem}
+.page-hero p{color:#94A3B8;font-size:.9rem}
+.breadcrumb{display:flex;align-items:center;gap:.4rem;margin-bottom:.85rem;font-size:.78rem;color:#64748B}
+.breadcrumb span{color:var(--teal-light);cursor:pointer}
+.breadcrumb span:hover{text-decoration:underline}
 
-.about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 3rem; align-items: start; }
-.about-text p { color: var(--gray); line-height: 1.8; margin-bottom: 1rem; font-size: 0.95rem; }
-.highlight-list { list-style: none; margin-top: 1.5rem; }
-.highlight-list li {
-  display: flex; align-items: flex-start; gap: 0.75rem;
-  padding: 0.6rem 0; border-bottom: 1px solid var(--light-gray); font-size: 0.92rem; color: var(--dark-text);
-}
-.highlight-list li::before {
-  content: ''; width: 8px; height: 8px; background: var(--teal);
-  border-radius: 50%; flex-shrink: 0; margin-top: 6px;
-}
-.info-cards { display: flex; flex-direction: column; gap: 1rem; }
-.info-card {
-  background: white; border-radius: 12px; padding: 1.25rem 1.5rem;
-  border-left: 4px solid var(--teal); box-shadow: var(--shadow);
-  transition: transform 0.2s;
-}
-.info-card:hover { transform: translateX(4px); }
-.info-card h4 { font-weight: 700; color: var(--navy); margin-bottom: 0.25rem; font-size: 0.95rem; }
-.info-card p { font-size: 0.85rem; color: var(--gray); }
+/* TABS */
+.tab-bar{background:white;border-bottom:2px solid var(--light-gray);display:flex;padding:0 1.5rem;overflow-x:auto;position:sticky;top:var(--nav-h);z-index:100;box-shadow:0 2px 8px rgba(0,0,0,.06);scrollbar-width:none}
+.tab-bar::-webkit-scrollbar{display:none}
+.tab-btn{background:none;border:none;cursor:pointer;padding:.85rem 1.05rem;font-family:'DM Sans',sans-serif;font-size:.84rem;font-weight:600;color:var(--gray);border-bottom:3px solid transparent;margin-bottom:-2px;transition:all .2s;white-space:nowrap}
+.tab-btn.active{color:var(--teal);border-bottom-color:var(--teal)}
+.tab-btn:hover:not(.active){color:var(--dark-text)}
+.tab-content{display:none}
+.tab-content.active{display:block}
 
-/* Department cards */
-.dept-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 1.25rem; }
-.dept-card {
-  background: white; border-radius: 14px; padding: 1.5rem;
-  box-shadow: var(--shadow); border: 1px solid var(--light-gray);
-  text-align: center; transition: all 0.3s; cursor: pointer;
-}
-.dept-card:hover { transform: translateY(-4px); box-shadow: var(--shadow-lg); border-color: var(--teal-light); }
-.dept-icon {
-  width: 52px; height: 52px; background: var(--navy); border-radius: 12px;
-  display: flex; align-items: center; justify-content: center;
-  font-size: 1.5rem; margin: 0 auto 1rem;
-}
-.dept-card h4 { font-weight: 700; color: var(--navy); font-size: 0.88rem; margin-bottom: 0.25rem; }
-.dept-card p { font-size: 0.78rem; color: var(--gray); }
+/* CONTENT */
+.content-section{max-width:1200px;margin:0 auto;padding:1.75rem 1.5rem}
+.filter-row{display:flex;gap:.6rem;flex-wrap:wrap;margin-bottom:1.35rem;align-items:center}
+.filter-label{font-size:.82rem;font-weight:600;color:var(--gray);white-space:nowrap}
+.filter-select,.filter-input{background:white;border:1.5px solid var(--light-gray);border-radius:8px;padding:.5rem .85rem;font-family:'DM Sans',sans-serif;font-size:.84rem;color:var(--dark-text);cursor:pointer;transition:border-color .2s}
+.filter-select:focus,.filter-input:focus{outline:none;border-color:var(--teal)}
+.results-badge{background:var(--teal-pale);color:var(--teal);padding:.2rem .65rem;border-radius:999px;font-size:.75rem;font-weight:700;margin-left:.25rem}
 
-/* Quick access */
-.quick-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1.25rem; }
-.quick-card {
-  background: white; border-radius: 14px; padding: 1.5rem 1rem;
-  box-shadow: var(--shadow); text-align: center; cursor: pointer;
-  border: 2px solid transparent; transition: all 0.25s;
-}
-.quick-card:hover { border-color: var(--teal); transform: translateY(-4px); box-shadow: var(--shadow-lg); }
-.quick-card .qicon { font-size: 2.2rem; margin-bottom: 0.75rem; }
-.quick-card h4 { font-weight: 700; color: var(--navy); font-size: 0.9rem; margin-bottom: 0.3rem; }
-.quick-card p { font-size: 0.78rem; color: var(--gray); }
+.table-wrap{overflow-x:auto;border-radius:14px;box-shadow:var(--shadow);border:1px solid var(--light-gray)}
+table{width:100%;border-collapse:collapse;background:white;min-width:500px}
+thead th{background:var(--navy);color:white;padding:.8rem 1rem;font-size:.78rem;font-weight:600;letter-spacing:.04em;text-align:left;white-space:nowrap}
+tbody td{padding:.8rem 1rem;font-size:.84rem;color:var(--dark-text);border-bottom:1px solid var(--light-gray)}
+tbody tr:last-child td{border-bottom:none}
+tbody tr:hover td{background:rgba(13,148,136,.04)}
+.badge{display:inline-block;padding:.18rem .55rem;border-radius:999px;font-size:.72rem;font-weight:600}
+.badge-green{background:#D1FAE5;color:#065F46}
+.badge-blue{background:#DBEAFE;color:#1E40AF}
+.badge-yellow{background:#FEF3C7;color:#92400E}
+.badge-red{background:#FEE2E2;color:#991B1B}
+.badge-gray{background:#F1F5F9;color:#475569}
+.badge-teal{background:var(--teal-pale);color:var(--teal)}
 
-/* Footer */
-.footer {
-  background: var(--navy); color: #94A3B8;
-  padding: 3rem 2rem 1.5rem; margin-top: 2rem;
-}
-.footer-grid { max-width: 1200px; margin: 0 auto; display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 2rem; margin-bottom: 2rem; }
-.footer h4 { color: white; font-weight: 700; margin-bottom: 1rem; font-size: 0.92rem; }
-.footer p, .footer li { font-size: 0.83rem; line-height: 1.8; }
-.footer ul { list-style: none; }
-.footer ul li { cursor: pointer; transition: color 0.2s; }
-.footer ul li:hover { color: var(--teal-light); }
-.footer-bottom { max-width: 1200px; margin: 0 auto; padding-top: 1.5rem; border-top: 1px solid rgba(255,255,255,0.08); text-align: center; font-size: 0.78rem; }
+/* BATCH HEADING */
+.batch-heading{font-family:'Playfair Display',serif;font-weight:700;color:var(--navy);font-size:1.05rem;margin:1.75rem 0 .9rem;display:flex;align-items:center;gap:.65rem}
+.batch-heading::after{content:'';flex:1;height:1px;background:var(--light-gray)}
 
-/* ── INNER PAGES ── */
-.page-hero {
-  background: var(--navy); padding: 3rem 2rem 2.5rem;
-  position: relative; overflow: hidden;
-}
-.page-hero::before {
-  content: ''; position: absolute; inset: 0;
-  background: radial-gradient(ellipse at 80% 50%, rgba(13,148,136,0.2) 0%, transparent 60%);
-}
-.page-hero-inner { max-width: 1200px; margin: 0 auto; position: relative; z-index: 1; }
-.page-hero h1 {
-  font-family: 'Playfair Display', serif; font-weight: 800;
-  color: white; font-size: 2.2rem; margin-bottom: 0.5rem;
-}
-.page-hero p { color: #94A3B8; font-size: 0.95rem; }
-.breadcrumb { display: flex; align-items: center; gap: 0.5rem; margin-bottom: 1rem; font-size: 0.8rem; color: #64748B; }
-.breadcrumb span { color: var(--teal-light); cursor: pointer; }
-.breadcrumb span:hover { text-decoration: underline; }
+/* CARD GRID */
+.card-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(275px,1fr));gap:1.1rem}
+.att-card{background:white;border-radius:14px;padding:1.2rem;box-shadow:var(--shadow);border:1px solid var(--light-gray);transition:all .25s}
+.att-card:hover{transform:translateY(-3px);box-shadow:var(--shadow-lg);border-color:var(--teal-light)}
+.att-card-top{display:flex;align-items:center;gap:.7rem;margin-bottom:.8rem}
+.att-icon{width:40px;height:40px;border-radius:10px;background:var(--teal-pale);display:flex;align-items:center;justify-content:center;font-size:1.1rem;flex-shrink:0}
+.att-card-title{font-weight:700;color:var(--navy);font-size:.9rem;line-height:1.3}
+.att-card-sub{font-size:.74rem;color:var(--gray);margin-top:.12rem}
+.att-card-meta{display:flex;flex-wrap:wrap;gap:.35rem;margin-bottom:.9rem}
+.att-link{display:flex;align-items:center;justify-content:center;gap:.4rem;background:var(--navy);color:white;border:none;border-radius:8px;padding:.52rem 1rem;font-size:.81rem;font-weight:600;cursor:pointer;text-decoration:none;font-family:'DM Sans',sans-serif;transition:background .2s;width:100%}
+.att-link:hover{background:var(--teal)}
 
-/* Tabs */
-.tab-bar {
-  background: white; border-bottom: 2px solid var(--light-gray);
-  display: flex; gap: 0; padding: 0 2rem; max-width: 100%; overflow-x: auto;
-  position: sticky; top: 64px; z-index: 100; box-shadow: 0 2px 8px rgba(0,0,0,0.06);
-}
-.tab-btn {
-  background: none; border: none; cursor: pointer; padding: 1rem 1.25rem;
-  font-family: 'DM Sans', sans-serif; font-size: 0.88rem; font-weight: 600;
-  color: var(--gray); border-bottom: 3px solid transparent; margin-bottom: -2px;
-  transition: all 0.2s; white-space: nowrap;
-}
-.tab-btn.active { color: var(--teal); border-bottom-color: var(--teal); }
-.tab-btn:hover { color: var(--dark-text); }
+/* BOOKS */
+.book-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(180px,1fr));gap:1.1rem}
+.book-card{background:white;border-radius:14px;overflow:hidden;box-shadow:var(--shadow);border:1px solid var(--light-gray);transition:all .25s;cursor:pointer}
+.book-card:hover{transform:translateY(-4px);box-shadow:var(--shadow-lg)}
+.book-cover{height:108px;display:flex;align-items:center;justify-content:center;font-size:2.6rem}
+.book-body{padding:.85rem}
+.book-body h4{font-weight:700;color:var(--navy);font-size:.81rem;margin-bottom:.2rem;line-height:1.3}
+.book-body p{font-size:.71rem;color:var(--gray);margin-bottom:.6rem}
+.book-btn{width:100%;background:var(--navy);color:white;border:none;border-radius:7px;padding:.38rem;font-size:.76rem;font-weight:600;cursor:pointer;font-family:'DM Sans',sans-serif;transition:background .2s}
+.book-btn:hover{background:var(--teal)}
 
-.tab-content { display: none; }
-.tab-content.active { display: block; }
+/* POLICY */
+.policy-card{background:var(--off-white);border-radius:10px;padding:1rem;border-left:4px solid var(--teal);margin-bottom:.75rem}
+.policy-card.warn{border-left-color:var(--gold)}
+.policy-card.danger{border-left-color:#EF4444}
+.policy-card.info{border-left-color:#8B5CF6}
+.policy-card strong{display:block;margin-bottom:.22rem;color:var(--dark-text)}
+.policy-card p{font-size:.84rem;color:var(--gray);line-height:1.6}
 
-/* Table */
-.content-section { max-width: 1200px; margin: 0 auto; padding: 2rem; }
-.filter-row { display: flex; gap: 0.75rem; flex-wrap: wrap; margin-bottom: 1.5rem; align-items: center; }
-.filter-select, .filter-input {
-  background: white; border: 1.5px solid var(--light-gray); border-radius: 8px;
-  padding: 0.55rem 0.9rem; font-family: 'DM Sans', sans-serif; font-size: 0.875rem;
-  color: var(--dark-text); cursor: pointer; transition: border-color 0.2s; min-width: 150px;
-}
-.filter-select:focus, .filter-input:focus { outline: none; border-color: var(--teal); }
+/* EMPTY STATE */
+.empty-state{text-align:center;padding:3rem 1rem;color:var(--gray)}
+.empty-state .empty-icon{font-size:3rem;margin-bottom:.75rem}
+.empty-state h4{font-weight:700;color:var(--dark-text);margin-bottom:.35rem}
 
-.table-card {
-  background: white; border-radius: 14px; box-shadow: var(--shadow);
-  overflow: hidden; border: 1px solid var(--light-gray);
-}
-.table-card table { width: 100%; border-collapse: collapse; }
-.table-card th {
-  background: var(--navy); color: white; padding: 0.85rem 1rem;
-  font-size: 0.8rem; font-weight: 600; letter-spacing: 0.05em; text-align: left;
-}
-.table-card td {
-  padding: 0.85rem 1rem; font-size: 0.875rem; color: var(--dark-text);
-  border-bottom: 1px solid var(--light-gray);
-}
-.table-card tr:last-child td { border-bottom: none; }
-.table-card tr:hover td { background: rgba(13,148,136,0.04); }
+/* CHATBOT */
+.chat-fab{position:fixed;bottom:1.5rem;right:1.5rem;z-index:2000;width:56px;height:56px;border-radius:50%;background:var(--teal);border:none;cursor:pointer;display:flex;align-items:center;justify-content:center;box-shadow:0 6px 24px rgba(13,148,136,.5);transition:all .3s;animation:pulse-fab 3s infinite}
+.chat-fab:hover{transform:scale(1.1);background:var(--teal-light)}
+@keyframes pulse-fab{0%,100%{box-shadow:0 6px 24px rgba(13,148,136,.5)}50%{box-shadow:0 6px 32px rgba(13,148,136,.8),0 0 0 8px rgba(13,148,136,.1)}}
+.chat-fab svg{width:23px;height:23px;fill:white}
+.chat-label{position:fixed;bottom:4.4rem;right:1.5rem;z-index:2001;background:var(--navy);color:white;padding:.32rem .7rem;border-radius:8px;font-size:.74rem;font-weight:600;white-space:nowrap;box-shadow:var(--shadow);pointer-events:none;transition:opacity .5s}
+.chat-label::after{content:'';position:absolute;bottom:-5px;right:18px;border-left:5px solid transparent;border-right:5px solid transparent;border-top:5px solid var(--navy)}
 
-.badge {
-  display: inline-block; padding: 0.2rem 0.6rem; border-radius: 999px;
-  font-size: 0.75rem; font-weight: 600;
-}
-.badge-green { background: #D1FAE5; color: #065F46; }
-.badge-blue { background: #DBEAFE; color: #1E40AF; }
-.badge-yellow { background: #FEF3C7; color: #92400E; }
-.badge-red { background: #FEE2E2; color: #991B1B; }
-.badge-gray { background: #F1F5F9; color: #475569; }
+.chat-window{position:fixed;bottom:5rem;right:1.5rem;z-index:1999;width:380px;max-height:570px;background:white;border-radius:20px;box-shadow:0 20px 60px rgba(13,27,42,.25),0 0 0 1px rgba(13,148,136,.15);display:flex;flex-direction:column;transform:scale(.88) translateY(18px);opacity:0;transition:all .35s cubic-bezier(0.34,1.56,0.64,1);pointer-events:none;overflow:hidden}
+.chat-window.open{transform:scale(1) translateY(0);opacity:1;pointer-events:all}
+.chat-header{background:var(--navy);padding:.88rem 1.1rem;display:flex;align-items:center;gap:.65rem}
+.chat-avatar{width:37px;height:37px;background:var(--teal);border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:.95rem;flex-shrink:0}
+.chat-header-info{flex:1}
+.chat-header-info h4{color:white;font-weight:700;font-size:.87rem}
+.chat-header-info p{color:var(--teal-light);font-size:.71rem;display:flex;align-items:center;gap:.3rem}
+.chat-header-info p::before{content:'';width:6px;height:6px;background:#22C55E;border-radius:50%;display:inline-block}
+.chat-close{background:none;border:none;cursor:pointer;color:#64748B;font-size:1.3rem;line-height:1;transition:color .2s;padding:.2rem}
+.chat-close:hover{color:white}
+.chat-body{flex:1;overflow-y:auto;padding:.85rem;display:flex;flex-direction:column;gap:.6rem;max-height:390px}
+.chat-body::-webkit-scrollbar{width:4px}
+.chat-body::-webkit-scrollbar-thumb{background:var(--light-gray);border-radius:2px}
+.msg{max-width:88%;display:flex;flex-direction:column}
+.msg.user{align-self:flex-end;align-items:flex-end}
+.msg.bot{align-self:flex-start;align-items:flex-start}
+.msg-bubble{padding:.58rem .82rem;border-radius:13px;font-size:.82rem;line-height:1.55;word-break:break-word}
+.msg.user .msg-bubble{background:var(--teal);color:white;border-bottom-right-radius:4px}
+.msg.bot .msg-bubble{background:var(--off-white);color:var(--dark-text);border-bottom-left-radius:4px;border:1px solid var(--light-gray)}
+.msg-time{font-size:.65rem;color:#94A3B8;margin-top:.18rem;padding:0 .12rem}
+.bot-typing{display:flex;align-items:center;gap:.3rem;padding:.58rem .82rem;background:var(--off-white);border:1px solid var(--light-gray);border-radius:13px;border-bottom-left-radius:4px;width:fit-content}
+.dot{width:6px;height:6px;background:var(--teal);border-radius:50%;animation:bounce-dot 1.2s infinite}
+.dot:nth-child(2){animation-delay:.2s}
+.dot:nth-child(3){animation-delay:.4s}
+@keyframes bounce-dot{0%,80%,100%{transform:translateY(0)}40%{transform:translateY(-5px)}}
+.chat-chips{padding:.42rem .88rem;display:flex;gap:.38rem;flex-wrap:wrap;border-top:1px solid var(--light-gray)}
+.chip{background:var(--teal-pale);color:var(--teal);border:1px solid rgba(13,148,136,.25);border-radius:999px;padding:.22rem .62rem;font-size:.71rem;font-weight:600;cursor:pointer;transition:all .2s;white-space:nowrap}
+.chip:hover{background:var(--teal);color:white}
+.chat-input-row{display:flex;gap:.42rem;padding:.62rem .88rem;border-top:1px solid var(--light-gray)}
+.chat-input{flex:1;border:1.5px solid var(--light-gray);border-radius:10px;padding:.52rem .78rem;font-family:'DM Sans',sans-serif;font-size:.84rem;transition:border-color .2s;resize:none;min-height:37px;max-height:88px}
+.chat-input:focus{outline:none;border-color:var(--teal)}
+.chat-send{width:37px;height:37px;background:var(--teal);border:none;border-radius:10px;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:all .2s;flex-shrink:0;align-self:flex-end}
+.chat-send:hover{background:var(--teal-light);transform:scale(1.05)}
+.chat-send svg{width:16px;height:16px;fill:white}
+.result-card{background:white;border:1px solid var(--light-gray);border-radius:9px;padding:.65rem;margin-top:.35rem;transition:border-color .2s}
+.result-card:hover{border-color:var(--teal)}
+.result-card h5{font-size:.79rem;font-weight:700;color:var(--navy);margin-bottom:.15rem}
+.result-card p{font-size:.72rem;color:var(--gray);margin-bottom:.32rem}
+.result-card a{font-size:.72rem;color:var(--teal);font-weight:600;text-decoration:none}
+.result-card a:hover{text-decoration:underline}
+.msg-bubble strong{font-weight:700}
+.msg-bubble em{font-style:italic;opacity:.85}
+.action-btn{display:inline-block;margin-top:.45rem;background:var(--teal);color:white;padding:.38rem .85rem;border-radius:7px;font-size:.77rem;font-weight:600;cursor:pointer;border:none;font-family:'DM Sans',sans-serif;text-decoration:none}
+.action-btn:hover{background:var(--teal-light)}
 
-/* Link cards */
-.link-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 1.25rem; }
-.link-card {
-  background: white; border-radius: 14px; padding: 1.5rem;
-  box-shadow: var(--shadow); border: 1px solid var(--light-gray);
-  transition: all 0.25s; text-decoration: none; display: block;
-}
-.link-card:hover { transform: translateY(-3px); box-shadow: var(--shadow-lg); border-color: var(--teal-light); }
-.link-card .lc-top { display: flex; align-items: flex-start; justify-content: space-between; margin-bottom: 0.75rem; }
-.link-card .lc-icon { width: 44px; height: 44px; border-radius: 10px; display: flex; align-items: center; justify-content: center; font-size: 1.3rem; flex-shrink: 0; }
-.lc-teal { background: var(--teal-pale); }
-.lc-navy { background: rgba(13,27,42,0.08); }
-.lc-gold { background: #FEF3C7; }
-.link-card h4 { font-weight: 700; color: var(--navy); font-size: 0.92rem; margin-bottom: 0.25rem; }
-.link-card p { font-size: 0.8rem; color: var(--gray); line-height: 1.5; }
-.link-arrow { color: var(--teal); font-size: 1.1rem; }
-
-/* Book cards */
-.book-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 1.25rem; }
-.book-card {
-  background: white; border-radius: 14px; overflow: hidden;
-  box-shadow: var(--shadow); border: 1px solid var(--light-gray);
-  transition: all 0.25s; cursor: pointer;
-}
-.book-card:hover { transform: translateY(-4px); box-shadow: var(--shadow-lg); }
-.book-cover {
-  height: 130px; display: flex; align-items: center; justify-content: center;
-  font-size: 3rem; position: relative;
-}
-.book-body { padding: 1rem; }
-.book-body h4 { font-weight: 700; color: var(--navy); font-size: 0.85rem; margin-bottom: 0.25rem; line-height: 1.3; }
-.book-body p { font-size: 0.75rem; color: var(--gray); margin-bottom: 0.75rem; }
-.book-btn {
-  width: 100%; background: var(--navy); color: white; border: none;
-  border-radius: 7px; padding: 0.45rem; font-size: 0.78rem; font-weight: 600;
-  cursor: pointer; font-family: 'DM Sans', sans-serif; transition: background 0.2s;
-}
-.book-btn:hover { background: var(--teal); }
-
-/* ── CHATBOT ── */
-.chat-fab {
-  position: fixed; bottom: 1.75rem; right: 1.75rem; z-index: 2000;
-  width: 60px; height: 60px; border-radius: 50%;
-  background: var(--teal); border: none; cursor: pointer;
-  display: flex; align-items: center; justify-content: center;
-  box-shadow: 0 6px 24px rgba(13,148,136,0.5); transition: all 0.3s;
-  animation: pulse-fab 3s infinite;
-}
-.chat-fab:hover { transform: scale(1.12); background: var(--teal-light); }
-@keyframes pulse-fab {
-  0%, 100% { box-shadow: 0 6px 24px rgba(13,148,136,0.5); }
-  50% { box-shadow: 0 6px 32px rgba(13,148,136,0.8), 0 0 0 8px rgba(13,148,136,0.12); }
-}
-.chat-fab svg { width: 26px; height: 26px; fill: white; }
-
-.chat-window {
-  position: fixed; bottom: 5.5rem; right: 1.75rem; z-index: 1999;
-  width: 390px; max-height: 580px;
-  background: white; border-radius: 20px;
-  box-shadow: 0 20px 60px rgba(13,27,42,0.25), 0 0 0 1px rgba(13,148,136,0.15);
-  display: flex; flex-direction: column;
-  transform: scale(0.85) translateY(20px); opacity: 0;
-  transition: all 0.35s cubic-bezier(0.34, 1.56, 0.64, 1);
-  pointer-events: none;
-  overflow: hidden;
-}
-.chat-window.open {
-  transform: scale(1) translateY(0); opacity: 1; pointer-events: all;
-}
-.chat-header {
-  background: var(--navy); padding: 1rem 1.25rem;
-  display: flex; align-items: center; gap: 0.75rem;
-  border-radius: 20px 20px 0 0;
-}
-.chat-avatar {
-  width: 40px; height: 40px; background: var(--teal); border-radius: 50%;
-  display: flex; align-items: center; justify-content: center; font-size: 1.1rem;
-  flex-shrink: 0;
-}
-.chat-header-info { flex: 1; }
-.chat-header-info h4 { color: white; font-weight: 700; font-size: 0.92rem; }
-.chat-header-info p { color: var(--teal-light); font-size: 0.75rem; display: flex; align-items: center; gap: 0.3rem; }
-.chat-header-info p::before { content: ''; width: 6px; height: 6px; background: #22C55E; border-radius: 50%; display: inline-block; }
-.chat-close {
-  background: none; border: none; cursor: pointer; color: #64748B;
-  font-size: 1.4rem; line-height: 1; transition: color 0.2s; padding: 0.25rem;
-}
-.chat-close:hover { color: white; }
-
-.chat-body {
-  flex: 1; overflow-y: auto; padding: 1rem;
-  display: flex; flex-direction: column; gap: 0.75rem;
-  max-height: 420px;
-}
-.chat-body::-webkit-scrollbar { width: 4px; }
-.chat-body::-webkit-scrollbar-track { background: transparent; }
-.chat-body::-webkit-scrollbar-thumb { background: var(--light-gray); border-radius: 2px; }
-
-.msg { max-width: 85%; display: flex; flex-direction: column; }
-.msg.user { align-self: flex-end; align-items: flex-end; }
-.msg.bot { align-self: flex-start; align-items: flex-start; }
-.msg-bubble {
-  padding: 0.65rem 0.9rem; border-radius: 14px;
-  font-size: 0.85rem; line-height: 1.55; word-break: break-word;
-}
-.msg.user .msg-bubble { background: var(--teal); color: white; border-bottom-right-radius: 4px; }
-.msg.bot .msg-bubble { background: var(--off-white); color: var(--dark-text); border-bottom-left-radius: 4px; border: 1px solid var(--light-gray); }
-.msg-time { font-size: 0.68rem; color: #94A3B8; margin-top: 0.2rem; padding: 0 0.2rem; }
-
-.bot-typing { display: flex; align-items: center; gap: 0.3rem; padding: 0.65rem 0.9rem; background: var(--off-white); border: 1px solid var(--light-gray); border-radius: 14px; border-bottom-left-radius: 4px; width: fit-content; }
-.dot { width: 7px; height: 7px; background: var(--teal); border-radius: 50%; animation: bounce-dot 1.2s infinite; }
-.dot:nth-child(2) { animation-delay: 0.2s; }
-.dot:nth-child(3) { animation-delay: 0.4s; }
-@keyframes bounce-dot { 0%, 80%, 100% { transform: translateY(0); } 40% { transform: translateY(-5px); } }
-
-.chat-suggestions {
-  padding: 0.5rem 1rem; display: flex; gap: 0.5rem; flex-wrap: wrap;
-  border-top: 1px solid var(--light-gray);
-}
-.suggestion-chip {
-  background: var(--teal-pale); color: var(--teal); border: 1px solid rgba(13,148,136,0.25);
-  border-radius: 999px; padding: 0.3rem 0.75rem; font-size: 0.75rem; font-weight: 600;
-  cursor: pointer; transition: all 0.2s; white-space: nowrap;
-}
-.suggestion-chip:hover { background: var(--teal); color: white; }
-
-.chat-input-row {
-  display: flex; gap: 0.5rem; padding: 0.75rem 1rem;
-  border-top: 1px solid var(--light-gray);
-}
-.chat-input {
-  flex: 1; border: 1.5px solid var(--light-gray); border-radius: 10px;
-  padding: 0.6rem 0.85rem; font-family: 'DM Sans', sans-serif; font-size: 0.875rem;
-  transition: border-color 0.2s; resize: none; min-height: 40px; max-height: 100px;
-}
-.chat-input:focus { outline: none; border-color: var(--teal); }
-.chat-send {
-  width: 40px; height: 40px; background: var(--teal); border: none;
-  border-radius: 10px; cursor: pointer; display: flex; align-items: center; justify-content: center;
-  transition: all 0.2s; flex-shrink: 0; align-self: flex-end;
-}
-.chat-send:hover { background: var(--teal-light); transform: scale(1.05); }
-.chat-send svg { width: 18px; height: 18px; fill: white; }
-
-/* Link result in chat */
-.chat-link-result {
-  background: white; border: 1px solid var(--light-gray); border-radius: 10px;
-  padding: 0.75rem; margin-top: 0.4rem; cursor: pointer; transition: border-color 0.2s;
-}
-.chat-link-result:hover { border-color: var(--teal); }
-.chat-link-result h5 { font-size: 0.82rem; font-weight: 700; color: var(--navy); margin-bottom: 0.2rem; }
-.chat-link-result p { font-size: 0.75rem; color: var(--gray); margin-bottom: 0.4rem; }
-.chat-link-result a { font-size: 0.75rem; color: var(--teal); font-weight: 600; text-decoration: none; }
-.chat-link-result a:hover { text-decoration: underline; }
-
-/* Mobile */
-@media (max-width: 900px) {
-  .hero-grid { grid-template-columns: 1fr; gap: 2rem; }
-  .about-grid { grid-template-columns: 1fr; }
-  .quick-grid { grid-template-columns: 1fr 1fr; }
-  .footer-grid { grid-template-columns: 1fr 1fr; }
-  .chat-window { width: calc(100vw - 2rem); right: 1rem; bottom: 5rem; }
-}
-@media (max-width: 600px) {
-  .nav-links { display: none; }
-  .quick-grid { grid-template-columns: 1fr 1fr; }
-  .hero-stats { grid-template-columns: 1fr 1fr; }
-  .section { padding: 2.5rem 1rem; }
-  .content-section { padding: 1.5rem 1rem; }
-  .info-strip { gap: 1.2rem; }
-}
-
-/* Animations */
-@keyframes fade-up {
-  from { opacity: 0; transform: translateY(24px); }
-  to { opacity: 1; transform: translateY(0); }
-}
-.fade-up { animation: fade-up 0.5s ease forwards; }
-.fade-up-2 { animation: fade-up 0.5s 0.15s ease forwards; opacity: 0; }
-.fade-up-3 { animation: fade-up 0.5s 0.3s ease forwards; opacity: 0; }
-
-.msg-bubble a { color: var(--teal); text-decoration: underline; }
+/* RESPONSIVE */
+@media(max-width:1024px){.quick-grid{grid-template-columns:repeat(2,1fr)}.footer-grid{grid-template-columns:1fr 1fr}.about-grid{grid-template-columns:1fr}}
+@media(max-width:768px){.nav-links{display:none}.hamburger{display:flex}.hero-grid{grid-template-columns:1fr;gap:2rem}.hero-stats{grid-template-columns:1fr 1fr}.dept-grid{grid-template-columns:repeat(2,1fr)}.chat-window{width:calc(100vw - 1.5rem);right:.75rem;bottom:4.75rem;max-height:75vh}.content-section{padding:1.25rem 1rem}}
+@media(max-width:480px){.hero{padding:2.75rem 1rem 2.5rem}.info-strip{gap:1rem;padding:.65rem 1rem}.info-item{font-size:.74rem}.quick-grid{grid-template-columns:1fr 1fr}.dept-grid{grid-template-columns:repeat(2,1fr)}.footer-grid{grid-template-columns:1fr}.book-grid{grid-template-columns:repeat(2,1fr)}.card-grid{grid-template-columns:1fr}.chat-window{width:calc(100vw - 1rem);right:.5rem}.chat-fab{bottom:1rem;right:1rem}.chat-label{bottom:4rem;right:1rem}}
 </style>
 </head>
 <body>
@@ -482,951 +249,683 @@ body {
 <nav class="nav">
   <div class="nav-brand" onclick="showPage('home')">
     <div class="nav-logo">N</div>
-    <div class="nav-title">
-      Narayana Engineering College
-      <span>Gudur · Tirupati Dist. · JNTUA</span>
-    </div>
+    <div class="nav-title">Narayana Engineering College<span>Gudur · JNTUA · Est. 2001</span></div>
   </div>
   <div class="nav-links">
     <button class="nav-link active" onclick="showPage('home')">Home</button>
     <button class="nav-link" onclick="showPage('timetable')">Timetables</button>
     <button class="nav-link" onclick="showPage('fees')">Fees</button>
     <button class="nav-link" onclick="showPage('attendance')">Attendance</button>
-    <button class="nav-link" onclick="showPage('books')">Books & Materials</button>
+    <button class="nav-link" onclick="showPage('books')">Books</button>
     <button class="nav-chat-btn" onclick="toggleChat()">
-      <svg viewBox="0 0 24 24" style="width:16px;height:16px;fill:white"><path d="M20 2H4c-1.1 0-2 .9-2 2v18l4-4h14c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2z"/></svg>
-      Ask AI
+      <svg viewBox="0 0 24 24" style="width:14px;height:14px;fill:white"><path d="M20 2H4c-1.1 0-2 .9-2 2v18l4-4h14c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2z"/></svg>Ask AI
     </button>
   </div>
+  <button class="hamburger" id="hb" onclick="toggleMobile()"><span></span><span></span><span></span></button>
 </nav>
+<div class="mobile-menu" id="mm">
+  <button class="nav-link" onclick="showPage('home');closeMobile()">🏠 Home</button>
+  <button class="nav-link" onclick="showPage('timetable');closeMobile()">📅 Timetables</button>
+  <button class="nav-link" onclick="showPage('fees');closeMobile()">💳 Fees</button>
+  <button class="nav-link" onclick="showPage('attendance');closeMobile()">✅ Attendance</button>
+  <button class="nav-link" onclick="showPage('books');closeMobile()">📚 Books</button>
+  <button class="nav-chat-btn" onclick="toggleChat();closeMobile()">💬 Ask College AI</button>
+</div>
 
-<!-- ══════════════════ HOME PAGE ══════════════════ -->
+<!-- HOME -->
 <div class="page active" id="page-home">
-
-  <!-- Hero -->
   <section class="hero">
     <div class="hero-grid">
-      <div class="fade-up">
+      <div>
         <div class="hero-badge">🎓 NAAC Accredited · JNTUA Affiliated · Est. 2001</div>
-        <h1 class="hero-title">
-          Engineering <em>Excellence</em><br>in the Heart of AP
-        </h1>
-        <p class="hero-sub">
-          Narayana Engineering College, Gudur — shaping engineers since 2001. AICTE-approved, JNTUA-affiliated, with state-of-the-art infrastructure, experienced faculty, and a legacy of outstanding placements.
-        </p>
+        <h1 class="hero-title">Engineering <em>Excellence</em><br>in the Heart of AP</h1>
+        <p class="hero-sub">Narayana Engineering College, Gudur — shaping engineers since 2001. AICTE-approved, JNTUA-affiliated, with state-of-the-art infrastructure and an outstanding placement legacy.</p>
         <div class="hero-btns">
           <button class="btn-primary" onclick="showPage('books')">Explore Resources</button>
           <button class="btn-outline" onclick="toggleChat()">💬 Ask College AI</button>
         </div>
       </div>
-      <div class="hero-stats fade-up-2">
-        <div class="stat-card">
-          <div class="stat-num">24+</div>
-          <div class="stat-label">Years of Excellence</div>
-        </div>
-        <div class="stat-card">
-          <div class="stat-num">6</div>
-          <div class="stat-label">B.Tech Programmes</div>
-        </div>
-        <div class="stat-card">
-          <div class="stat-num">120+</div>
-          <div class="stat-label">Expert Faculty</div>
-        </div>
-        <div class="stat-card">
-          <div class="stat-num">95%</div>
-          <div class="stat-label">Placement Rate</div>
-        </div>
+      <div class="hero-stats">
+        <div class="stat-card"><div class="stat-num">24+</div><div class="stat-label">Years of Excellence</div></div>
+        <div class="stat-card"><div class="stat-num">6</div><div class="stat-label">B.Tech Programmes</div></div>
+        <div class="stat-card"><div class="stat-num">120+</div><div class="stat-label">Expert Faculty</div></div>
+        <div class="stat-card"><div class="stat-num">95%</div><div class="stat-label">Placement Rate</div></div>
       </div>
     </div>
   </section>
-
-  <!-- Info strip -->
   <div class="info-strip">
     <div class="info-item">📍 Dhurjati Nagar, Gudur, Tirupati Dist., AP - 524101</div>
     <div class="info-item">📞 +91-86880 00005</div>
     <div class="info-item">✉️ info@narayanaengg.ac.in</div>
-    <div class="info-item">🕐 Mon–Sat: 9:00 AM – 5:00 PM</div>
+    <div class="info-item">🕐 Mon–Sat: 9 AM – 5 PM</div>
   </div>
-
-  <!-- About -->
   <div class="section">
-    <div class="section-header">
-      <div class="section-tag">About Us</div>
-      <h2 class="section-title">Building Tomorrow's Engineers</h2>
-      <p class="section-sub">A centre of excellence with world-class facilities and industry-focused curriculum</p>
-    </div>
+    <div class="section-header"><div class="section-tag">About Us</div><h2 class="section-title">Building Tomorrow's Engineers</h2><p class="section-sub">A centre of excellence with world-class facilities and industry-focused curriculum</p></div>
     <div class="about-grid">
       <div class="about-text">
-        <p>Narayana Engineering College is an autonomous institution affiliated to Jawaharlal Nehru Technological University Anantapur (JNTUA) and approved by AICTE, New Delhi. Established in 2001, the college has consistently maintained high academic standards and an outstanding placement record.</p>
-        <p>The campus is equipped with well-furnished laboratories, digital classrooms, a vast library with 50,000+ volumes, high-speed Wi-Fi, and dedicated research centres. The college fosters innovation, technical skills, and holistic development.</p>
+        <p>Narayana Engineering College is an autonomous institution affiliated to JNTUA and approved by AICTE, New Delhi. Established in 2001, the college has consistently maintained high academic standards and an outstanding placement record.</p>
+        <p>The campus is equipped with well-furnished laboratories, digital classrooms, a vast library with 50,000+ volumes, high-speed Wi-Fi, and dedicated research centres fostering innovation and holistic development.</p>
         <ul class="highlight-list">
           <li>NAAC Accredited institution with autonomous status</li>
           <li>Industry-partnered curriculum with live project exposure</li>
           <li>MoUs with leading IT companies for internships & placements</li>
-          <li>Active student clubs: coding, robotics, entrepreneurship, arts</li>
-          <li>Centrally air-conditioned smart classrooms with digital boards</li>
+          <li>Active student clubs: coding, robotics, entrepreneurship</li>
+          <li>Smart classrooms with digital boards throughout campus</li>
           <li>Hostel facilities for boys & girls with 24×7 security</li>
         </ul>
       </div>
       <div class="info-cards">
-        <div class="info-card">
-          <h4>🏛️ Affiliation & Accreditation</h4>
-          <p>JNTUA Affiliated · AICTE Approved · NAAC Accredited (A Grade) · NBA Accredited Departments</p>
-        </div>
-        <div class="info-card">
-          <h4>📅 Academic Year 2025–26</h4>
-          <p>Odd Semester: June – November 2025 | Even Semester: Dec 2025 – May 2026</p>
-        </div>
-        <div class="info-card">
-          <h4>🎓 Student Strength</h4>
-          <p>3,200+ students across 6 branches in B.Tech (4-year), M.Tech (2-year), and MBA programmes</p>
-        </div>
-        <div class="info-card">
-          <h4>🏆 Placements 2024–25</h4>
-          <p>250+ companies visited | 800+ offers | Highest package: ₹18.5 LPA | Avg: ₹5.2 LPA</p>
-        </div>
-        <div class="info-card">
-          <h4>🔬 Research & Innovation</h4>
-          <p>5 active research labs | 80+ publications | 3 patents filed | DST-funded projects</p>
-        </div>
+        <div class="info-card"><h4>🏛️ Affiliation & Accreditation</h4><p>JNTUA Affiliated · AICTE Approved · NAAC Accredited (A Grade)</p></div>
+        <div class="info-card"><h4>📅 Academic Year 2025–26</h4><p>Odd Sem: June – November 2025 | Even Sem: December 2025 – May 2026</p></div>
+        <div class="info-card"><h4>🎓 Student Strength</h4><p>3,200+ students across 6 branches — B.Tech, M.Tech, and MBA</p></div>
+        <div class="info-card"><h4>🏆 Placements 2024–25</h4><p>250+ companies | 800+ offers | Highest: ₹18.5 LPA | Avg: ₹5.2 LPA</p></div>
+        <div class="info-card"><h4>🔬 Research & Innovation</h4><p>5 active research labs · 80+ publications · 3 patents filed</p></div>
       </div>
     </div>
   </div>
-
-  <!-- Departments -->
-  <div style="background:white;padding:1rem 0">
+  <div style="background:white;padding:1px 0">
+    <div class="section">
+      <div class="section-header"><div class="section-tag">Academics</div><h2 class="section-title">Our Departments</h2></div>
+      <div class="dept-grid">
+        <div class="dept-card" onclick="showPage('timetable')"><div class="dept-icon">💻</div><h4>Computer Science & Engg.</h4><p>AI/ML, Web Dev, Cloud, Cyber</p></div>
+        <div class="dept-card"><div class="dept-icon">⚡</div><h4>Electrical & Electronics</h4><p>Power Systems, Drives, Smart Grids</p></div>
+        <div class="dept-card"><div class="dept-icon">🔧</div><h4>Mechanical Engineering</h4><p>CAD/CAM, Manufacturing, Robotics</p></div>
+        <div class="dept-card"><div class="dept-icon">🏗️</div><h4>Civil Engineering</h4><p>Structural, Transportation, Env.</p></div>
+        <div class="dept-card"><div class="dept-icon">📡</div><h4>Electronics & Communication</h4><p>VLSI, Signal Processing, Embedded</p></div>
+        <div class="dept-card" onclick="showPage('books')"><div class="dept-icon">🤖</div><h4>AI & Machine Learning</h4><p>Deep Learning, NLP, Computer Vision</p></div>
+      </div>
+    </div>
+  </div>
   <div class="section">
-    <div class="section-header">
-      <div class="section-tag">Academics</div>
-      <h2 class="section-title">Departments</h2>
-    </div>
-    <div class="dept-grid">
-      <div class="dept-card" onclick="showPage('timetable')">
-        <div class="dept-icon">💻</div>
-        <h4>Computer Science & Engineering</h4>
-        <p>AI/ML, Web Dev, Cloud, Cybersecurity</p>
-      </div>
-      <div class="dept-card">
-        <div class="dept-icon">⚡</div>
-        <h4>Electrical & Electronics</h4>
-        <p>Power systems, Drives, Smart Grids</p>
-      </div>
-      <div class="dept-card">
-        <div class="dept-icon">🔧</div>
-        <h4>Mechanical Engineering</h4>
-        <p>CAD/CAM, Manufacturing, Robotics</p>
-      </div>
-      <div class="dept-card">
-        <div class="dept-icon">🏗️</div>
-        <h4>Civil Engineering</h4>
-        <p>Structural, Transportation, Env. Engg.</p>
-      </div>
-      <div class="dept-card">
-        <div class="dept-icon">📡</div>
-        <h4>Electronics & Communication</h4>
-        <p>VLSI, Signal Proc., Embedded Systems</p>
-      </div>
-      <div class="dept-card">
-        <div class="dept-icon">🤖</div>
-        <h4>AI & Machine Learning</h4>
-        <p>Deep Learning, NLP, Computer Vision</p>
-      </div>
-    </div>
-  </div>
-  </div>
-
-  <!-- Quick Access -->
-  <div class="section">
-    <div class="section-header">
-      <div class="section-tag">Quick Access</div>
-      <h2 class="section-title">What are you looking for?</h2>
-    </div>
+    <div class="section-header"><div class="section-tag">Quick Access</div><h2 class="section-title">What are you looking for?</h2></div>
     <div class="quick-grid">
-      <div class="quick-card" onclick="showPage('timetable')">
-        <div class="qicon">📅</div>
-        <h4>Timetables</h4>
-        <p>View & download semester-wise class timetables</p>
-      </div>
-      <div class="quick-card" onclick="showPage('fees')">
-        <div class="qicon">💳</div>
-        <h4>Fee Structure</h4>
-        <p>Semester fees, due dates, online payment links</p>
-      </div>
-      <div class="quick-card" onclick="showPage('attendance')">
-        <div class="qicon">✅</div>
-        <h4>Attendance</h4>
-        <p>Check attendance by batch, year & semester</p>
-      </div>
-      <div class="quick-card" onclick="showPage('books')">
-        <div class="qicon">📚</div>
-        <h4>Books & Materials</h4>
-        <p>Subject PDFs, notes, question banks, references</p>
-      </div>
+      <div class="quick-card" onclick="showPage('timetable')"><div class="qicon">📅</div><h4>Timetables</h4><p>Branch & semester-wise class schedules</p></div>
+      <div class="quick-card" onclick="showPage('fees')"><div class="qicon">💳</div><h4>Fee Info</h4><p>Scholarships, due dates & payment links</p></div>
+      <div class="quick-card" onclick="showPage('attendance')"><div class="qicon">✅</div><h4>Attendance</h4><p>Batch-wise attendance portal links</p></div>
+      <div class="quick-card" onclick="showPage('books')"><div class="qicon">📚</div><h4>Books & Materials</h4><p>Subject PDFs, notes & question banks</p></div>
     </div>
   </div>
-
-  <!-- Footer -->
   <footer class="footer">
     <div class="footer-grid">
       <div>
         <h4>Narayana Engineering College</h4>
         <p>An Autonomous Institution under JNTUA, Approved by AICTE, New Delhi. Committed to excellence in technical education since 2001.</p>
-        <p style="margin-top:0.75rem">📍 Dhurjati Nagar, Gudur, Tirupati Dist., AP - 524101</p>
-        <p>📞 +91-86880 00005 | ✉️ info@narayanaengg.ac.in</p>
+        <p style="margin-top:.65rem">📍 Dhurjati Nagar, Gudur, Tirupati Dist., AP - 524101<br>📞 +91-86880 00005 · ✉️ info@narayanaengg.ac.in</p>
       </div>
-      <div>
-        <h4>Quick Links</h4>
-        <ul>
-          <li onclick="showPage('timetable')">Timetables</li>
-          <li onclick="showPage('fees')">Fee Structure</li>
-          <li onclick="showPage('attendance')">Attendance</li>
-          <li onclick="showPage('books')">Books & Materials</li>
-        </ul>
-      </div>
-      <div>
-        <h4>Academics</h4>
-        <ul>
-          <li>B.Tech CSE</li>
-          <li>B.Tech ECE</li>
-          <li>B.Tech AIML</li>
-          <li>B.Tech Civil</li>
-          <li>B.Tech Mech</li>
-          <li>M.Tech / MBA</li>
-        </ul>
-      </div>
-      <div>
-        <h4>Student Services</h4>
-        <ul>
-          <li>Exam Cell</li>
-          <li>Scholarships</li>
-          <li>Placements</li>
-          <li>Hostel</li>
-          <li>Library</li>
-          <li>Grievances</li>
-        </ul>
-      </div>
+      <div><h4>Quick Links</h4><ul>
+        <li onclick="showPage('timetable')">Timetables</li><li onclick="showPage('fees')">Fee Information</li>
+        <li onclick="showPage('attendance')">Attendance</li><li onclick="showPage('books')">Books & Materials</li>
+      </ul></div>
+      <div><h4>Academics</h4><ul><li>B.Tech CSE</li><li>B.Tech ECE</li><li>B.Tech AIML</li><li>B.Tech Civil</li><li>B.Tech Mech</li><li>M.Tech / MBA</li></ul></div>
+      <div><h4>Student Services</h4><ul><li>Exam Cell</li><li>Scholarships</li><li>Placements</li><li>Hostel</li><li>Library</li><li>Grievances</li></ul></div>
     </div>
-    <div class="footer-bottom">
-      <p>© 2025 Narayana Engineering College, Gudur. All rights reserved. | Designed by Batch 14 – AI Chatbot Project</p>
-    </div>
+    <div class="footer-bottom"><p>© 2025 Narayana Engineering College, Gudur. All rights reserved.</p></div>
   </footer>
 </div>
 
-<!-- ══════════════════ TIMETABLE PAGE ══════════════════ -->
+<!-- TIMETABLES -->
 <div class="page" id="page-timetable">
-  <div class="page-hero">
-    <div class="page-hero-inner">
-      <div class="breadcrumb"><span onclick="showPage('home')">Home</span> › Timetables</div>
-      <h1>📅 Class Timetables</h1>
-      <p>Branch-wise, year-wise, and semester-wise timetables for 2025–26</p>
-    </div>
-  </div>
-  <div class="tab-bar">
-    <button class="tab-btn active" onclick="switchTab('tt','cse')">CSE</button>
-    <button class="tab-btn" onclick="switchTab('tt','ece')">ECE</button>
-    <button class="tab-btn" onclick="switchTab('tt','aiml')">AI & ML</button>
-    <button class="tab-btn" onclick="switchTab('tt','mech')">Mech</button>
-    <button class="tab-btn" onclick="switchTab('tt','civil')">Civil</button>
-    <button class="tab-btn" onclick="switchTab('tt','eee')">EEE</button>
+  <div class="page-hero"><div class="page-hero-inner">
+    <div class="breadcrumb"><span onclick="showPage('home')">Home</span> › Timetables</div>
+    <h1>📅 Class Timetables</h1>
+    <p>Select your branch, then filter by year, semester or batch</p>
+  </div></div>
+  <div class="tab-bar" id="tt-tabs">
+    <button class="tab-btn active" data-br="CSE"  onclick="ttBranch(this)">CSE</button>
+    <button class="tab-btn"        data-br="ECE"  onclick="ttBranch(this)">ECE</button>
+    <button class="tab-btn"        data-br="AIML" onclick="ttBranch(this)">AI & ML</button>
+    <button class="tab-btn"        data-br="MECH" onclick="ttBranch(this)">Mechanical</button>
+    <button class="tab-btn"        data-br="CIVIL"onclick="ttBranch(this)">Civil</button>
+    <button class="tab-btn"        data-br="EEE"  onclick="ttBranch(this)">EEE</button>
   </div>
   <div class="content-section">
-
-    <!-- CSE -->
-    <div class="tab-content active" id="tt-cse">
-      <div class="filter-row">
-        <select class="filter-select" id="cse-year" onchange="filterTT()">
-          <option>All Years</option><option>1st Year</option><option>2nd Year</option><option>3rd Year</option><option>4th Year</option>
-        </select>
-        <select class="filter-select" id="cse-batch">
-          <option>All Batches</option><option>2022–2026</option><option>2023–2027</option><option>2024–2028</option>
-        </select>
-      </div>
-      <div class="table-card">
-        <table id="tt-table-cse">
-          <thead><tr>
-            <th>Year</th><th>Semester</th><th>Batch</th><th>Section</th><th>Faculty Incharge</th><th>Room</th><th>Download</th>
-          </tr></thead>
-          <tbody>
-            <tr><td>1st Year</td><td><span class="badge badge-blue">Sem 1</span></td><td>2024–2028</td><td>A</td><td>Dr. K. Ramesh</td><td>Room 101</td><td><a href="#" onclick="chatQuery('Timetable for 1st year CSE Sem 1 Section A 2024-2028 batch')">📄 View</a></td></tr>
-            <tr><td>1st Year</td><td><span class="badge badge-blue">Sem 2</span></td><td>2024–2028</td><td>B</td><td>Prof. S. Anuradha</td><td>Room 102</td><td><a href="#" onclick="chatQuery('Timetable for 1st year CSE Sem 2 Section B 2024-2028 batch')">📄 View</a></td></tr>
-            <tr><td>2nd Year</td><td><span class="badge badge-green">Sem 3</span></td><td>2023–2027</td><td>A</td><td>Dr. P. Lavanya</td><td>Room 201</td><td><a href="#" onclick="chatQuery('Timetable for 2nd year CSE Sem 3 2023-2027 batch')">📄 View</a></td></tr>
-            <tr><td>2nd Year</td><td><span class="badge badge-green">Sem 4</span></td><td>2023–2027</td><td>B</td><td>Prof. M. Srikanth</td><td>Room 202</td><td><a href="#" onclick="chatQuery('Timetable for 2nd year CSE Sem 4 2023-2027 batch')">📄 View</a></td></tr>
-            <tr><td>3rd Year</td><td><span class="badge badge-yellow">Sem 5</span></td><td>2022–2026</td><td>A</td><td>Dr. G. Pradeep</td><td>Room 301</td><td><a href="#" onclick="chatQuery('Timetable for 3rd year CSE Sem 5 2022-2026 batch')">📄 View</a></td></tr>
-            <tr><td>3rd Year</td><td><span class="badge badge-yellow">Sem 6</span></td><td>2022–2026</td><td>A</td><td>Prof. N. Spandana</td><td>Room 302</td><td><a href="#" onclick="chatQuery('Timetable for 3rd year CSE Sem 6 2022-2026 batch')">📄 View</a></td></tr>
-            <tr><td>4th Year</td><td><span class="badge badge-red">Sem 7</span></td><td>2021–2025</td><td>A</td><td>Dr. V. Suresh</td><td>Room 401</td><td><a href="#" onclick="chatQuery('Timetable for 4th year CSE Sem 7 2021-2025 batch')">📄 View</a></td></tr>
-            <tr><td>4th Year</td><td><span class="badge badge-red">Sem 8</span></td><td>2021–2025</td><td>A</td><td>Prof. B. Rathna</td><td>Room 402</td><td><a href="#" onclick="chatQuery('Timetable for 4th year CSE Sem 8 2021-2025 batch')">📄 View</a></td></tr>
-          </tbody>
-        </table>
-      </div>
-      <p style="margin-top:1rem; font-size:0.82rem; color:var(--gray)">📌 Timetables are updated at the beginning of each semester. Contact the department for corrections.</p>
+    <div class="filter-row">
+      <span class="filter-label">Filter:</span>
+      <select class="filter-select" id="tt-yr"  onchange="ttRender()"><option value="">All Years</option><option value="1">1st Year</option><option value="2">2nd Year</option><option value="3">3rd Year</option><option value="4">4th Year</option></select>
+      <select class="filter-select" id="tt-sem" onchange="ttRender()"><option value="">All Semesters</option><option value="1">Sem 1</option><option value="2">Sem 2</option><option value="3">Sem 3</option><option value="4">Sem 4</option><option value="5">Sem 5</option><option value="6">Sem 6</option><option value="7">Sem 7</option><option value="8">Sem 8</option></select>
+      <select class="filter-select" id="tt-bat" onchange="ttRender()"><option value="">All Batches</option><option value="2021-2025">2021–2025</option><option value="2022-2026">2022–2026</option><option value="2023-2027">2023–2027</option><option value="2024-2028">2024–2028</option></select>
+      <span id="tt-count" class="results-badge" style="display:none"></span>
     </div>
-
-    <div class="tab-content" id="tt-ece">
-      <div class="table-card"><table><thead><tr><th>Year</th><th>Semester</th><th>Batch</th><th>Section</th><th>Faculty Incharge</th><th>Room</th><th>Download</th></tr></thead><tbody>
-        <tr><td>1st Year</td><td><span class="badge badge-blue">Sem 1</span></td><td>2024–2028</td><td>A</td><td>Dr. T. Anand</td><td>E-101</td><td><a href="#">📄 View</a></td></tr>
-        <tr><td>2nd Year</td><td><span class="badge badge-green">Sem 3</span></td><td>2023–2027</td><td>A</td><td>Prof. R. Madhuri</td><td>E-201</td><td><a href="#">📄 View</a></td></tr>
-        <tr><td>3rd Year</td><td><span class="badge badge-yellow">Sem 5</span></td><td>2022–2026</td><td>A</td><td>Dr. C. Vijay</td><td>E-301</td><td><a href="#">📄 View</a></td></tr>
-        <tr><td>4th Year</td><td><span class="badge badge-red">Sem 7</span></td><td>2021–2025</td><td>A</td><td>Prof. D. Kavitha</td><td>E-401</td><td><a href="#">📄 View</a></td></tr>
-      </tbody></table></div>
-    </div>
-
-    <div class="tab-content" id="tt-aiml">
-      <div class="table-card"><table><thead><tr><th>Year</th><th>Semester</th><th>Batch</th><th>Section</th><th>Faculty Incharge</th><th>Room</th><th>Download</th></tr></thead><tbody>
-        <tr><td>1st Year</td><td><span class="badge badge-blue">Sem 1</span></td><td>2024–2028</td><td>A</td><td>Dr. S. Padmavathi</td><td>AI-101</td><td><a href="#">📄 View</a></td></tr>
-        <tr><td>2nd Year</td><td><span class="badge badge-green">Sem 3</span></td><td>2023–2027</td><td>A</td><td>Prof. K. Rohith</td><td>AI-201</td><td><a href="#">📄 View</a></td></tr>
-        <tr><td>3rd Year</td><td><span class="badge badge-yellow">Sem 5</span></td><td>2022–2026</td><td>A</td><td>Dr. L. Nagesh</td><td>AI-301</td><td><a href="#">📄 View</a></td></tr>
-        <tr><td>4th Year</td><td><span class="badge badge-red">Sem 7</span></td><td>2021–2025</td><td>A</td><td>Prof. B. Sravani</td><td>AI-401</td><td><a href="#">📄 View</a></td></tr>
-      </tbody></table></div>
-    </div>
-
-    <div class="tab-content" id="tt-mech">
-      <div class="table-card"><table><thead><tr><th>Year</th><th>Semester</th><th>Batch</th><th>Faculty Incharge</th><th>Room</th><th>Download</th></tr></thead><tbody>
-        <tr><td>2nd Year</td><td><span class="badge badge-green">Sem 3</span></td><td>2023–2027</td><td>Dr. M. Naidu</td><td>M-201</td><td><a href="#">📄 View</a></td></tr>
-        <tr><td>3rd Year</td><td><span class="badge badge-yellow">Sem 5</span></td><td>2022–2026</td><td>Prof. P. Rao</td><td>M-301</td><td><a href="#">📄 View</a></td></tr>
-      </tbody></table></div>
-    </div>
-
-    <div class="tab-content" id="tt-civil">
-      <div class="table-card"><table><thead><tr><th>Year</th><th>Semester</th><th>Batch</th><th>Faculty Incharge</th><th>Room</th><th>Download</th></tr></thead><tbody>
-        <tr><td>2nd Year</td><td><span class="badge badge-green">Sem 4</span></td><td>2023–2027</td><td>Dr. S. Reddy</td><td>C-201</td><td><a href="#">📄 View</a></td></tr>
-        <tr><td>3rd Year</td><td><span class="badge badge-yellow">Sem 6</span></td><td>2022–2026</td><td>Prof. V. Lakshmi</td><td>C-301</td><td><a href="#">📄 View</a></td></tr>
-      </tbody></table></div>
-    </div>
-
-    <div class="tab-content" id="tt-eee">
-      <div class="table-card"><table><thead><tr><th>Year</th><th>Semester</th><th>Batch</th><th>Faculty Incharge</th><th>Room</th><th>Download</th></tr></thead><tbody>
-        <tr><td>2nd Year</td><td><span class="badge badge-green">Sem 3</span></td><td>2023–2027</td><td>Dr. B. Kishore</td><td>EE-201</td><td><a href="#">📄 View</a></td></tr>
-        <tr><td>3rd Year</td><td><span class="badge badge-yellow">Sem 5</span></td><td>2022–2026</td><td>Prof. A. Nirmala</td><td>EE-301</td><td><a href="#">📄 View</a></td></tr>
-      </tbody></table></div>
-    </div>
-
+    <div class="table-wrap"><table>
+      <thead><tr><th>Year</th><th>Semester</th><th>Batch</th><th>Section</th><th>Faculty Incharge</th><th>Room</th><th>Action</th></tr></thead>
+      <tbody id="tt-body"></tbody>
+    </table></div>
+    <div class="empty-state" id="tt-empty" style="display:none"><div class="empty-icon">🔍</div><h4>No results</h4><p>Try changing the filters above</p></div>
+    <p style="margin-top:1rem;font-size:.79rem;color:var(--gray)">📌 Timetables updated at start of each semester. Contact your dept. for room changes.</p>
   </div>
 </div>
 
-<!-- ══════════════════ FEES PAGE ══════════════════ -->
+<!-- FEES -->
 <div class="page" id="page-fees">
-  <div class="page-hero">
-    <div class="page-hero-inner">
-      <div class="breadcrumb"><span onclick="showPage('home')">Home</span> › Fee Structure</div>
-      <h1>💳 Fee Structure & Payments</h1>
-      <p>Semester-wise fee schedule, due dates, scholarships, and online payment portal links</p>
-    </div>
-  </div>
+  <div class="page-hero"><div class="page-hero-inner">
+    <div class="breadcrumb"><span onclick="showPage('home')">Home</span> › Fees</div>
+    <h1>💳 Fee Information & Scholarships</h1>
+    <p>General fee overview, due dates, scholarships and payment portals</p>
+  </div></div>
   <div class="tab-bar">
-    <button class="tab-btn active" onclick="switchTab('fee','structure')">Fee Structure</button>
-    <button class="tab-btn" onclick="switchTab('fee','duedates')">Due Dates</button>
-    <button class="tab-btn" onclick="switchTab('fee','scholarships')">Scholarships</button>
-    <button class="tab-btn" onclick="switchTab('fee','payment')">Online Payment</button>
+    <button class="tab-btn active" onclick="gTab('fee','overview')">Overview</button>
+    <button class="tab-btn" onclick="gTab('fee','due')">Due Dates</button>
+    <button class="tab-btn" onclick="gTab('fee','scholar')">Scholarships</button>
+    <button class="tab-btn" onclick="gTab('fee','pay')">Pay Online</button>
   </div>
   <div class="content-section">
-
-    <div class="tab-content active" id="fee-structure">
-      <div style="margin-bottom:1.5rem; display:grid; grid-template-columns: repeat(auto-fit, minmax(200px,1fr)); gap:1rem">
-        <div style="background:var(--navy);color:white;border-radius:12px;padding:1.25rem;text-align:center">
-          <div style="font-size:1.8rem;font-weight:800;color:var(--teal-light)">₹85,000</div>
-          <div style="font-size:0.82rem;margin-top:0.25rem;color:#94A3B8">CSE / AIML / ECE — Annual</div>
-        </div>
-        <div style="background:var(--navy);color:white;border-radius:12px;padding:1.25rem;text-align:center">
-          <div style="font-size:1.8rem;font-weight:800;color:var(--teal-light)">₹78,000</div>
-          <div style="font-size:0.82rem;margin-top:0.25rem;color:#94A3B8">Mech / Civil / EEE — Annual</div>
-        </div>
-        <div style="background:var(--navy);color:white;border-radius:12px;padding:1.25rem;text-align:center">
-          <div style="font-size:1.8rem;font-weight:800;color:var(--gold)">₹12,000</div>
-          <div style="font-size:0.82rem;margin-top:0.25rem;color:#94A3B8">Hostel (per semester)</div>
-        </div>
-        <div style="background:var(--navy);color:white;border-radius:12px;padding:1.25rem;text-align:center">
-          <div style="font-size:1.8rem;font-weight:800;color:var(--gold)">₹4,500</div>
-          <div style="font-size:0.82rem;margin-top:0.25rem;color:#94A3B8">Exam Fee (per semester)</div>
-        </div>
+    <div class="tab-content active" id="fee-overview">
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));gap:1rem;margin-bottom:1.75rem">
+        <div style="background:var(--navy);border-radius:12px;padding:1.2rem;text-align:center"><div style="font-size:1.7rem;font-weight:800;color:var(--teal-light);font-family:'Playfair Display',serif">₹85,000</div><div style="font-size:.79rem;margin-top:.2rem;color:#94A3B8">CSE / AIML / ECE — Per Year</div></div>
+        <div style="background:var(--navy);border-radius:12px;padding:1.2rem;text-align:center"><div style="font-size:1.7rem;font-weight:800;color:var(--teal-light);font-family:'Playfair Display',serif">₹78,000</div><div style="font-size:.79rem;margin-top:.2rem;color:#94A3B8">Mech / Civil / EEE — Per Year</div></div>
+        <div style="background:var(--navy);border-radius:12px;padding:1.2rem;text-align:center"><div style="font-size:1.7rem;font-weight:800;color:var(--gold);font-family:'Playfair Display',serif">₹12,000</div><div style="font-size:.79rem;margin-top:.2rem;color:#94A3B8">Hostel (per semester)</div></div>
+        <div style="background:var(--navy);border-radius:12px;padding:1.2rem;text-align:center"><div style="font-size:1.7rem;font-weight:800;color:var(--gold);font-family:'Playfair Display',serif">₹4,500</div><div style="font-size:.79rem;margin-top:.2rem;color:#94A3B8">Exam Fee (per semester)</div></div>
       </div>
-      <div class="table-card">
-        <table>
-          <thead><tr><th>Year</th><th>Semester</th><th>Tuition Fee</th><th>Dev. Fee</th><th>Lab Fee</th><th>Exam Fee</th><th>Total</th><th>Status</th></tr></thead>
-          <tbody>
-            <tr><td>1st Year</td><td>Sem 1</td><td>₹36,500</td><td>₹5,000</td><td>₹3,500</td><td>₹4,500</td><td><strong>₹49,500</strong></td><td><span class="badge badge-green">Paid</span></td></tr>
-            <tr><td>1st Year</td><td>Sem 2</td><td>₹36,500</td><td>₹5,000</td><td>₹3,500</td><td>₹4,500</td><td><strong>₹49,500</strong></td><td><span class="badge badge-blue">Due: Apr 2025</span></td></tr>
-            <tr><td>2nd Year</td><td>Sem 3</td><td>₹38,000</td><td>₹5,000</td><td>₹4,500</td><td>₹4,500</td><td><strong>₹52,000</strong></td><td><span class="badge badge-green">Paid</span></td></tr>
-            <tr><td>2nd Year</td><td>Sem 4</td><td>₹38,000</td><td>₹5,000</td><td>₹4,500</td><td>₹4,500</td><td><strong>₹52,000</strong></td><td><span class="badge badge-yellow">Due: Mar 2025</span></td></tr>
-            <tr><td>3rd Year</td><td>Sem 5</td><td>₹40,500</td><td>₹5,000</td><td>₹5,000</td><td>₹4,500</td><td><strong>₹55,000</strong></td><td><span class="badge badge-green">Paid</span></td></tr>
-            <tr><td>3rd Year</td><td>Sem 6</td><td>₹40,500</td><td>₹5,000</td><td>₹5,000</td><td>₹4,500</td><td><strong>₹55,000</strong></td><td><span class="badge badge-blue">Due: Apr 2025</span></td></tr>
-            <tr><td>4th Year</td><td>Sem 7</td><td>₹42,500</td><td>₹5,000</td><td>₹5,000</td><td>₹4,500</td><td><strong>₹57,000</strong></td><td><span class="badge badge-green">Paid</span></td></tr>
-            <tr><td>4th Year</td><td>Sem 8</td><td>₹42,500</td><td>₹5,000</td><td>₹5,000</td><td>₹4,500</td><td><strong>₹57,000</strong></td><td><span class="badge badge-blue">Due: Apr 2025</span></td></tr>
-          </tbody>
-        </table>
+      <div style="background:var(--teal-pale);border:1px solid rgba(13,148,136,.3);border-radius:12px;padding:1.2rem;max-width:680px">
+        <h4 style="color:var(--teal);font-weight:700;margin-bottom:.45rem">ℹ️ Personal fee details</h4>
+        <p style="font-size:.86rem;color:var(--dark-text);line-height:1.7">Individual fee receipts, balance dues, and clearance certificates are available on the <strong>NEC ERP Portal</strong>. Login with your Hall Ticket Number. For queries, contact the Accounts Office.</p>
+        <a href="https://erp.narayanaengg.ac.in" target="_blank" style="display:inline-block;margin-top:.7rem;background:var(--teal);color:white;padding:.42rem .95rem;border-radius:7px;font-size:.8rem;font-weight:600;text-decoration:none">Open ERP Portal →</a>
       </div>
     </div>
-
-    <div class="tab-content" id="fee-duedates">
-      <div class="table-card"><table>
+    <div class="tab-content" id="fee-due">
+      <div class="table-wrap"><table>
         <thead><tr><th>Semester</th><th>Batch</th><th>Fee Type</th><th>Due Date</th><th>Late Fine</th><th>Status</th></tr></thead>
         <tbody>
-          <tr><td>Sem 4 (Even 2024–25)</td><td>2023–2027</td><td>Tuition + Exam</td><td>15 March 2025</td><td>₹500/week</td><td><span class="badge badge-red">Overdue</span></td></tr>
-          <tr><td>Sem 2 (Even 2024–25)</td><td>2024–2028</td><td>Tuition + Exam</td><td>20 March 2025</td><td>₹500/week</td><td><span class="badge badge-yellow">Pending</span></td></tr>
-          <tr><td>Sem 6 (Even 2024–25)</td><td>2022–2026</td><td>Tuition + Exam</td><td>25 March 2025</td><td>₹500/week</td><td><span class="badge badge-yellow">Pending</span></td></tr>
-          <tr><td>Sem 8 (Even 2024–25)</td><td>2021–2025</td><td>Tuition + Exam</td><td>10 April 2025</td><td>₹500/week</td><td><span class="badge badge-green">Upcoming</span></td></tr>
-          <tr><td>Hostel Fee – Even 2025</td><td>All Batches</td><td>Hostel</td><td>1 January 2025</td><td>₹200/week</td><td><span class="badge badge-green">Paid</span></td></tr>
+          <tr><td>Sem 4 Even 24–25</td><td>2023–2027</td><td>Tuition + Exam</td><td>15 Mar 2025</td><td>₹500/wk</td><td><span class="badge badge-red">Overdue</span></td></tr>
+          <tr><td>Sem 2 Even 24–25</td><td>2024–2028</td><td>Tuition + Exam</td><td>20 Mar 2025</td><td>₹500/wk</td><td><span class="badge badge-yellow">Pending</span></td></tr>
+          <tr><td>Sem 6 Even 24–25</td><td>2022–2026</td><td>Tuition + Exam</td><td>25 Mar 2025</td><td>₹500/wk</td><td><span class="badge badge-yellow">Pending</span></td></tr>
+          <tr><td>Sem 8 Even 24–25</td><td>2021–2025</td><td>Tuition + Exam</td><td>10 Apr 2025</td><td>₹500/wk</td><td><span class="badge badge-green">Upcoming</span></td></tr>
+          <tr><td>Hostel – Even 2025</td><td>All</td><td>Hostel</td><td>1 Jan 2025</td><td>₹200/wk</td><td><span class="badge badge-green">Paid</span></td></tr>
         </tbody>
       </table></div>
     </div>
-
-    <div class="tab-content" id="fee-scholarships">
-      <div class="link-grid">
-        <div class="link-card"><div class="lc-top"><div class="lc-icon lc-teal">🎓</div><span class="link-arrow">→</span></div><h4>AP State Scholarship (EAMCET Rank Based)</h4><p>For students with EAMCET rank below 5000. Up to ₹35,000/year. Apply via AP Scholarship portal.</p><a href="https://scholarship.ap.gov.in" target="_blank">Apply at scholarship.ap.gov.in →</a></div>
-        <div class="link-card"><div class="lc-top"><div class="lc-icon lc-teal">🏅</div><span class="link-arrow">→</span></div><h4>Merit Scholarship (Topper Award)</h4><p>Full fee waiver for branch toppers. Automatic from 2nd year based on SGPA ≥ 9.0.</p><a href="#">College Merit Form →</a></div>
-        <div class="link-card"><div class="lc-top"><div class="lc-icon lc-gold">👨‍👩‍👧</div><span class="link-arrow">→</span></div><h4>BC / SC / ST Fee Reimbursement</h4><p>Government fee reimbursement for eligible categories. Apply through official AP Govt portal.</p><a href="https://apscfdc.ap.gov.in" target="_blank">APSCFDC Portal →</a></div>
-        <div class="link-card"><div class="lc-top"><div class="lc-icon lc-navy">💼</div><span class="link-arrow">→</span></div><h4>Minority Scholarship</h4><p>National Minority Development Finance Corporation scholarship. Up to ₹30,000/year.</p><a href="https://scholarships.gov.in" target="_blank">scholarships.gov.in →</a></div>
+    <div class="tab-content" id="fee-scholar">
+      <div class="card-grid">
+        <div class="att-card"><div class="att-card-top"><div class="att-icon">🎓</div><div><div class="att-card-title">AP State Scholarship</div><div class="att-card-sub">EAMCET rank &lt; 5000 — up to ₹35,000/yr</div></div></div><p style="font-size:.82rem;color:var(--gray);margin-bottom:.85rem">Apply via AP Scholarship portal. Docs: income cert, rank card, bank details.</p><a class="att-link" href="https://scholarship.ap.gov.in" target="_blank">🔗 scholarship.ap.gov.in</a></div>
+        <div class="att-card"><div class="att-card-top"><div class="att-icon">🏅</div><div><div class="att-card-title">Merit Scholarship</div><div class="att-card-sub">Full fee waiver for branch toppers — SGPA ≥ 9.0</div></div></div><p style="font-size:.82rem;color:var(--gray);margin-bottom:.85rem">Awarded automatically from 2nd year based on academic performance.</p><a class="att-link" href="#" target="_blank">📋 Scholarship Form</a></div>
+        <div class="att-card"><div class="att-card-top"><div class="att-icon">👨‍👩‍👧</div><div><div class="att-card-title">BC / SC / ST Fee Reimbursement</div><div class="att-card-sub">AP Govt fee reimbursement for eligible categories</div></div></div><p style="font-size:.82rem;color:var(--gray);margin-bottom:.85rem">Apply via AP SCFDC portal. Category & income certificate required.</p><a class="att-link" href="https://apscfdc.ap.gov.in" target="_blank">🔗 apscfdc.ap.gov.in</a></div>
+        <div class="att-card"><div class="att-card-top"><div class="att-icon">💼</div><div><div class="att-card-title">Minority Scholarship</div><div class="att-card-sub">NMFDC — up to ₹30,000/yr</div></div></div><p style="font-size:.82rem;color:var(--gray);margin-bottom:.85rem">Available via National Scholarship Portal. Deadline: usually October each year.</p><a class="att-link" href="https://scholarships.gov.in" target="_blank">🔗 scholarships.gov.in</a></div>
       </div>
     </div>
-
-    <div class="tab-content" id="fee-payment">
-      <div class="link-grid">
-        <div class="link-card"><div class="lc-top"><div class="lc-icon lc-teal">💻</div><span class="link-arrow">→</span></div><h4>College Fee Portal (NEC ERP)</h4><p>Pay tuition, exam, and hostel fees through the official NEC ERP system. Login with Hall Ticket No.</p><a href="https://erp.narayanaengg.ac.in" target="_blank">erp.narayanaengg.ac.in →</a></div>
-        <div class="link-card"><div class="lc-top"><div class="lc-icon lc-teal">📱</div><span class="link-arrow">→</span></div><h4>JNTUA Exam Fee Payment</h4><p>Pay JNTUA university examination fees here. Required for all regular and backlog exams.</p><a href="https://jntua.ac.in/examfee" target="_blank">jntua.ac.in/examfee →</a></div>
-        <div class="link-card"><div class="lc-top"><div class="lc-icon lc-gold">🏦</div><span class="link-arrow">→</span></div><h4>DD / Challan Payment</h4><p>Demand Draft in favour of "Principal, NEC Gudur". Bank: SBI Branch, Gudur — IFSC: SBIN0014921</p><a href="#">Download Challan →</a></div>
+    <div class="tab-content" id="fee-pay">
+      <div class="card-grid">
+        <div class="att-card"><div class="att-card-top"><div class="att-icon">💻</div><div><div class="att-card-title">NEC ERP Fee Portal</div><div class="att-card-sub">Tuition, exam & hostel fee payment</div></div></div><p style="font-size:.82rem;color:var(--gray);margin-bottom:.85rem">Login with Hall Ticket No. Download receipts after payment.</p><a class="att-link" href="https://erp.narayanaengg.ac.in" target="_blank">🔗 erp.narayanaengg.ac.in</a></div>
+        <div class="att-card"><div class="att-card-top"><div class="att-icon">📱</div><div><div class="att-card-title">JNTUA Exam Fee</div><div class="att-card-sub">University exam fee — ₹4,500/semester</div></div></div><p style="font-size:.82rem;color:var(--gray);margin-bottom:.85rem">Pay before filling the exam form. Hall Ticket required.</p><a class="att-link" href="https://jntua.ac.in" target="_blank">🔗 jntua.ac.in</a></div>
+        <div class="att-card"><div class="att-card-top"><div class="att-icon">🏦</div><div><div class="att-card-title">DD / Bank Challan</div><div class="att-card-sub">Offline payment via demand draft</div></div></div><p style="font-size:.82rem;color:var(--gray);margin-bottom:.85rem">DD in favour of <em>"Principal, NEC Gudur"</em>. SBI Gudur — IFSC: SBIN0014921.</p><a class="att-link" href="#" target="_blank">📄 Download Challan</a></div>
       </div>
     </div>
-
   </div>
 </div>
 
-<!-- ══════════════════ ATTENDANCE PAGE ══════════════════ -->
+<!-- ATTENDANCE -->
 <div class="page" id="page-attendance">
-  <div class="page-hero">
-    <div class="page-hero-inner">
-      <div class="breadcrumb"><span onclick="showPage('home')">Home</span> › Attendance</div>
-      <h1>✅ Attendance Links & Portal</h1>
-      <p>Year-wise, semester-wise and batch-wise attendance portals for all branches</p>
-    </div>
-  </div>
+  <div class="page-hero"><div class="page-hero-inner">
+    <div class="breadcrumb"><span onclick="showPage('home')">Home</span> › Attendance</div>
+    <h1>✅ Attendance Portals</h1>
+    <p>Batch-wise attendance portal links — grouped by admission year</p>
+  </div></div>
   <div class="tab-bar">
-    <button class="tab-btn active" onclick="switchTab('att','links')">Attendance Links</button>
-    <button class="tab-btn" onclick="switchTab('att','policy')">Attendance Policy</button>
-    <button class="tab-btn" onclick="switchTab('att','shortage')">Shortage List</button>
+    <button class="tab-btn active" onclick="gTab('att','links')">Attendance Links</button>
+    <button class="tab-btn" onclick="gTab('att','policy')">Policy</button>
+    <button class="tab-btn" onclick="gTab('att','shortage')">Shortage List</button>
   </div>
   <div class="content-section">
-
     <div class="tab-content active" id="att-links">
       <div class="filter-row">
-        <select class="filter-select" id="att-branch" onchange="filterAttLinks()">
-          <option value="all">All Branches</option>
-          <option value="cse">CSE</option>
-          <option value="ece">ECE</option>
-          <option value="aiml">AI & ML</option>
-          <option value="mech">Mechanical</option>
-          <option value="civil">Civil</option>
-          <option value="eee">EEE</option>
-        </select>
-        <select class="filter-select" id="att-year" onchange="filterAttLinks()">
-          <option value="all">All Years</option>
-          <option value="1">1st Year</option>
-          <option value="2">2nd Year</option>
-          <option value="3">3rd Year</option>
-          <option value="4">4th Year</option>
-        </select>
-        <select class="filter-select" id="att-batch" onchange="filterAttLinks()">
-          <option value="all">All Batches</option>
-          <option value="2022-2026">2022–2026</option>
-          <option value="2023-2027">2023–2027</option>
-          <option value="2024-2028">2024–2028</option>
-        </select>
+        <span class="filter-label">Filter:</span>
+        <select class="filter-select" id="att-br" onchange="attRender()"><option value="">All Branches</option><option>CSE</option><option>ECE</option><option>AIML</option><option>MECH</option><option>CIVIL</option><option>EEE</option></select>
+        <select class="filter-select" id="att-bat" onchange="attRender()"><option value="">All Batches</option><option value="2024-2028">2024–2028 (1st Year)</option><option value="2023-2027">2023–2027 (2nd Year)</option><option value="2022-2026">2022–2026 (3rd Year)</option><option value="2021-2025">2021–2025 (4th Year)</option></select>
       </div>
-      <div class="link-grid" id="att-link-grid">
-        <!-- Dynamically rendered -->
-      </div>
+      <div id="att-content"></div>
     </div>
-
     <div class="tab-content" id="att-policy">
-      <div style="max-width:700px">
-        <div class="table-card" style="padding:1.5rem;border:none">
-          <h3 style="font-family:'Playfair Display',serif;color:var(--navy);margin-bottom:1rem">Attendance Policy — NEC Gudur</h3>
-          <div style="display:flex;flex-direction:column;gap:0.75rem">
-            <div style="background:var(--off-white);border-radius:8px;padding:1rem;border-left:4px solid var(--teal)">
-              <strong>Minimum Required: 75%</strong>
-              <p style="font-size:0.85rem;color:var(--gray);margin-top:0.25rem">Students must maintain at least 75% attendance in each subject to be eligible for semester examinations (as per JNTUA regulations).</p>
-            </div>
-            <div style="background:var(--off-white);border-radius:8px;padding:1rem;border-left:4px solid var(--gold)">
-              <strong>Condonation: 65%–74%</strong>
-              <p style="font-size:0.85rem;color:var(--gray);margin-top:0.25rem">Students with 65–74% attendance may apply for condonation at the department level. Medical certificates & valid reasons required.</p>
-            </div>
-            <div style="background:var(--off-white);border-radius:8px;padding:1rem;border-left:4px solid #EF4444">
-              <strong>Detained: Below 65%</strong>
-              <p style="font-size:0.85rem;color:var(--gray);margin-top:0.25rem">Students below 65% attendance will be detained and cannot appear for semester examinations in that subject.</p>
-            </div>
-            <div style="background:var(--off-white);border-radius:8px;padding:1rem;border-left:4px solid #8B5CF6">
-              <strong>Attendance Recording</strong>
-              <p style="font-size:0.85rem;color:var(--gray);margin-top:0.25rem">Attendance is recorded every period by faculty. Students can view real-time attendance on the NEC ERP portal and the JNTUA Attendance Portal.</p>
-            </div>
-          </div>
-        </div>
+      <div style="max-width:660px">
+        <div class="policy-card"><strong>✅ Minimum Required: 75%</strong><p>Students must maintain at least 75% attendance per subject to be eligible for semester exams — per JNTUA regulations.</p></div>
+        <div class="policy-card warn"><strong>⚠️ Condonation: 65% – 74%</strong><p>Students in this range may apply for condonation at the department. Medical certificates and valid reasons required.</p></div>
+        <div class="policy-card danger"><strong>🚫 Detained: Below 65%</strong><p>Students below 65% are detained and cannot appear for end-semester exams in that subject.</p></div>
+        <div class="policy-card info"><strong>📋 How Attendance is Recorded</strong><p>Marked every period by faculty on the NEC ERP. Students can view real-time attendance on the ERP portal or JNTUA portal using their roll number.</p></div>
       </div>
     </div>
-
     <div class="tab-content" id="att-shortage">
-      <div class="table-card"><table>
-        <thead><tr><th>Roll No</th><th>Name</th><th>Branch</th><th>Year</th><th>Subject</th><th>Attendance %</th><th>Status</th></tr></thead>
+      <div class="table-wrap"><table>
+        <thead><tr><th>Roll No</th><th>Name</th><th>Branch</th><th>Year</th><th>Batch</th><th>Subject</th><th>Att. %</th><th>Status</th></tr></thead>
         <tbody>
-          <tr><td>22F11A0512</td><td>Sample Student A</td><td>CSE</td><td>3rd</td><td>DBMS</td><td>62%</td><td><span class="badge badge-red">Detained</span></td></tr>
-          <tr><td>23F11A0534</td><td>Sample Student B</td><td>ECE</td><td>2nd</td><td>Signals & Systems</td><td>68%</td><td><span class="badge badge-yellow">Condonation</span></td></tr>
-          <tr><td>22F11A0509</td><td>Sample Student C</td><td>CSE</td><td>3rd</td><td>OS</td><td>71%</td><td><span class="badge badge-yellow">Condonation</span></td></tr>
-          <tr><td>24F11A0103</td><td>Sample Student D</td><td>AIML</td><td>1st</td><td>Mathematics-I</td><td>58%</td><td><span class="badge badge-red">Detained</span></td></tr>
+          <tr><td>22F11A0512</td><td>Sample Student A</td><td>CSE</td><td>3rd</td><td>2022–2026</td><td>DBMS</td><td>62%</td><td><span class="badge badge-red">Detained</span></td></tr>
+          <tr><td>23F11A0534</td><td>Sample Student B</td><td>ECE</td><td>2nd</td><td>2023–2027</td><td>Signals & Systems</td><td>68%</td><td><span class="badge badge-yellow">Condonation</span></td></tr>
+          <tr><td>22F11A0509</td><td>Sample Student C</td><td>CSE</td><td>3rd</td><td>2022–2026</td><td>Operating Systems</td><td>71%</td><td><span class="badge badge-yellow">Condonation</span></td></tr>
+          <tr><td>24F11A0103</td><td>Sample Student D</td><td>AIML</td><td>1st</td><td>2024–2028</td><td>Mathematics-I</td><td>58%</td><td><span class="badge badge-red">Detained</span></td></tr>
         </tbody>
       </table></div>
-      <p style="margin-top:1rem;font-size:0.82rem;color:var(--gray)">⚠️ This is a sample. Actual shortage lists are published on the ERP portal and college notice board before each exam.</p>
+      <p style="margin-top:1rem;font-size:.79rem;color:var(--gray)">⚠️ Sample data. Official shortage lists published on ERP portal and notice boards before each exam.</p>
     </div>
-
   </div>
 </div>
 
-<!-- ══════════════════ BOOKS PAGE ══════════════════ -->
+<!-- BOOKS -->
 <div class="page" id="page-books">
-  <div class="page-hero">
-    <div class="page-hero-inner">
-      <div class="breadcrumb"><span onclick="showPage('home')">Home</span> › Books & Materials</div>
-      <h1>📚 Books & Study Materials</h1>
-      <p>Subject-wise textbooks, PDF notes, question banks, lab manuals, and reference materials</p>
-    </div>
-  </div>
+  <div class="page-hero"><div class="page-hero-inner">
+    <div class="breadcrumb"><span onclick="showPage('home')">Home</span> › Books & Materials</div>
+    <h1>📚 Books & Study Materials</h1>
+    <p>Textbooks, PDFs, notes, question banks and lab manuals organised by branch</p>
+  </div></div>
   <div class="tab-bar">
-    <button class="tab-btn active" onclick="switchTab('bk','cse')">CSE</button>
-    <button class="tab-btn" onclick="switchTab('bk','ece')">ECE</button>
-    <button class="tab-btn" onclick="switchTab('bk','aiml')">AI & ML</button>
-    <button class="tab-btn" onclick="switchTab('bk','mech')">Mech / Civil</button>
-    <button class="tab-btn" onclick="switchTab('bk','common')">Common (R20)</button>
+    <button class="tab-btn active" onclick="gTab('bk','cse')">CSE</button>
+    <button class="tab-btn" onclick="gTab('bk','ece')">ECE</button>
+    <button class="tab-btn" onclick="gTab('bk','aiml')">AI & ML</button>
+    <button class="tab-btn" onclick="gTab('bk','mech')">Mech / Civil</button>
+    <button class="tab-btn" onclick="gTab('bk','common')">Common (R20)</button>
   </div>
   <div class="content-section">
-
     <div class="tab-content active" id="bk-cse">
-      <div class="filter-row">
-        <select class="filter-select" id="bk-cse-year">
-          <option>All Years</option><option>1st Year</option><option>2nd Year</option><option>3rd Year</option><option>4th Year</option>
-        </select>
-        <input class="filter-input" placeholder="🔍 Search subject..." style="min-width:200px" oninput="filterBooks(this)"/>
-      </div>
-      <div class="book-grid" id="book-grid-cse"></div>
+      <div class="filter-row"><input class="filter-input" id="bk-s-cse" placeholder="🔍 Search subject or author…" oninput="bkFilter('cse')" style="min-width:210px"/>
+      <select class="filter-select" id="bk-sem-cse" onchange="bkFilter('cse')"><option value="">All Sems</option><option>Sem 3</option><option>Sem 4</option><option>Sem 5</option><option>Sem 6</option><option>Sem 7</option></select></div>
+      <div class="book-grid" id="bg-cse"></div><div class="empty-state" id="be-cse" style="display:none"><div class="empty-icon">📭</div><h4>No books found</h4><p>Try a different search</p></div>
     </div>
-
-    <div class="tab-content" id="bk-ece">
-      <div class="book-grid" id="book-grid-ece"></div>
-    </div>
-
+    <div class="tab-content" id="bk-ece"><div class="book-grid" id="bg-ece"></div></div>
     <div class="tab-content" id="bk-aiml">
-      <div class="book-grid" id="book-grid-aiml"></div>
+      <div class="filter-row"><input class="filter-input" id="bk-s-aiml" placeholder="🔍 Search…" oninput="bkFilter('aiml')" style="min-width:210px"/></div>
+      <div class="book-grid" id="bg-aiml"></div><div class="empty-state" id="be-aiml" style="display:none"><div class="empty-icon">📭</div><h4>No books found</h4><p>Try a different search</p></div>
     </div>
-
-    <div class="tab-content" id="bk-mech">
-      <div class="book-grid" id="book-grid-mech"></div>
-    </div>
-
-    <div class="tab-content" id="bk-common">
-      <div class="book-grid" id="book-grid-common"></div>
-    </div>
-
+    <div class="tab-content" id="bk-mech"><div class="book-grid" id="bg-mech"></div></div>
+    <div class="tab-content" id="bk-common"><div class="book-grid" id="bg-common"></div></div>
   </div>
 </div>
 
-<!-- ══════════════════ CHATBOT ══════════════════ -->
-<button class="chat-fab" onclick="toggleChat()" id="chat-fab" title="Ask College AI">
-  <svg viewBox="0 0 24 24"><path d="M20 2H4c-1.1 0-2 .9-2 2v18l4-4h14c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2z"/></svg>
-</button>
-
-<div class="chat-window" id="chat-window">
+<!-- CHATBOT -->
+<div class="chat-label" id="cl">Ask College AI 👋</div>
+<button class="chat-fab" onclick="toggleChat()"><svg viewBox="0 0 24 24"><path d="M20 2H4c-1.1 0-2 .9-2 2v18l4-4h14c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2z"/></svg></button>
+<div class="chat-window" id="cw">
   <div class="chat-header">
     <div class="chat-avatar">🤖</div>
-    <div class="chat-header-info">
-      <h4>NEC College Assistant</h4>
-      <p>Online — Ready to help</p>
-    </div>
+    <div class="chat-header-info"><h4>NEC College Assistant</h4><p>Online — Ready to help</p></div>
     <button class="chat-close" onclick="toggleChat()">✕</button>
   </div>
-  <div class="chat-body" id="chat-body"></div>
-  <div class="chat-suggestions" id="chat-suggestions">
-    <span class="suggestion-chip" onclick="sendSuggestion(this)">Attendance 2nd yr CSE 2023–2027</span>
-    <span class="suggestion-chip" onclick="sendSuggestion(this)">AIML PDF notes</span>
-    <span class="suggestion-chip" onclick="sendSuggestion(this)">Exam fee due date</span>
-    <span class="suggestion-chip" onclick="sendSuggestion(this)">CSE Sem 5 timetable</span>
+  <div class="chat-body" id="cb"></div>
+  <div class="chat-chips" id="chips">
+    <span class="chip" onclick="useChip(this)">2nd yr CSE attendance 2023–2027</span>
+    <span class="chip" onclick="useChip(this)">AIML PDF notes</span>
+    <span class="chip" onclick="useChip(this)">Exam fee due date</span>
+    <span class="chip" onclick="useChip(this)">CSE Sem 5 timetable</span>
   </div>
   <div class="chat-input-row">
-    <textarea class="chat-input" id="chat-input" rows="1" placeholder="Ask anything about NEC..." onkeydown="handleKey(event)"></textarea>
-    <button class="chat-send" onclick="sendMessage()">
-      <svg viewBox="0 0 24 24"><path d="M2.01 21L23 12 2.01 3 2 10l15 2-15 2z"/></svg>
-    </button>
+    <textarea class="chat-input" id="ci" rows="1" placeholder="Ask anything about NEC…" onkeydown="ciKey(event)" oninput="ciResize(this)"></textarea>
+    <button class="chat-send" onclick="ciSend()"><svg viewBox="0 0 24 24"><path d="M2.01 21L23 12 2.01 3 2 10l15 2-15 2z"/></svg></button>
   </div>
 </div>
 
 <script>
-// ── PAGE ROUTING ──
-function showPage(id) {
-  document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
-  document.querySelectorAll('.nav-link').forEach(l => l.classList.remove('active'));
-  document.getElementById('page-' + id).classList.add('active');
-  const map = {home:0,timetable:1,fees:2,attendance:3,books:4};
-  const btns = document.querySelectorAll('.nav-link');
-  if(map[id] !== undefined) btns[map[id]].classList.add('active');
-  window.scrollTo(0,0);
-  if(id === 'books') renderBooks();
-  if(id === 'attendance') renderAttLinks();
-}
+/* ─── DATA ─── */
+const TT = [
+  {br:'CSE', y:1,s:1,bat:'2024-2028',sec:'A',fac:'Dr. K. Ramesh',room:'CSE-101'},
+  {br:'CSE', y:1,s:1,bat:'2024-2028',sec:'B',fac:'Prof. S. Anuradha',room:'CSE-102'},
+  {br:'CSE', y:1,s:2,bat:'2024-2028',sec:'A',fac:'Dr. P. Lavanya',room:'CSE-101'},
+  {br:'CSE', y:1,s:2,bat:'2024-2028',sec:'B',fac:'Prof. M. Srikanth',room:'CSE-102'},
+  {br:'CSE', y:2,s:3,bat:'2023-2027',sec:'A',fac:'Dr. G. Pradeep',room:'CSE-201'},
+  {br:'CSE', y:2,s:3,bat:'2023-2027',sec:'B',fac:'Prof. N. Spandana',room:'CSE-202'},
+  {br:'CSE', y:2,s:4,bat:'2023-2027',sec:'A',fac:'Dr. V. Suresh',room:'CSE-201'},
+  {br:'CSE', y:2,s:4,bat:'2023-2027',sec:'B',fac:'Prof. B. Rathna',room:'CSE-202'},
+  {br:'CSE', y:3,s:5,bat:'2022-2026',sec:'A',fac:'Dr. K. Chandrasekhar',room:'CSE-301'},
+  {br:'CSE', y:3,s:6,bat:'2022-2026',sec:'A',fac:'Prof. R. Sravani',room:'CSE-301'},
+  {br:'CSE', y:4,s:7,bat:'2021-2025',sec:'A',fac:'Dr. L. Rajesh',room:'CSE-401'},
+  {br:'CSE', y:4,s:8,bat:'2021-2025',sec:'A',fac:'Prof. A. Padmaja',room:'CSE-401'},
+  {br:'ECE', y:1,s:1,bat:'2024-2028',sec:'A',fac:'Dr. T. Anand',room:'ECE-101'},
+  {br:'ECE', y:1,s:2,bat:'2024-2028',sec:'A',fac:'Prof. R. Madhuri',room:'ECE-101'},
+  {br:'ECE', y:2,s:3,bat:'2023-2027',sec:'A',fac:'Dr. C. Vijay',room:'ECE-201'},
+  {br:'ECE', y:2,s:4,bat:'2023-2027',sec:'A',fac:'Prof. D. Kavitha',room:'ECE-201'},
+  {br:'ECE', y:3,s:5,bat:'2022-2026',sec:'A',fac:'Dr. S. Prasad',room:'ECE-301'},
+  {br:'ECE', y:3,s:6,bat:'2022-2026',sec:'A',fac:'Prof. M. Usha',room:'ECE-301'},
+  {br:'ECE', y:4,s:7,bat:'2021-2025',sec:'A',fac:'Dr. N. Kishore',room:'ECE-401'},
+  {br:'AIML',y:1,s:1,bat:'2024-2028',sec:'A',fac:'Dr. S. Padmavathi',room:'AI-101'},
+  {br:'AIML',y:1,s:2,bat:'2024-2028',sec:'A',fac:'Prof. K. Rohith',room:'AI-101'},
+  {br:'AIML',y:2,s:3,bat:'2023-2027',sec:'A',fac:'Dr. L. Nagesh',room:'AI-201'},
+  {br:'AIML',y:2,s:4,bat:'2023-2027',sec:'A',fac:'Prof. B. Sravani',room:'AI-201'},
+  {br:'AIML',y:3,s:5,bat:'2022-2026',sec:'A',fac:'Dr. P. Sunitha',room:'AI-301'},
+  {br:'AIML',y:3,s:6,bat:'2022-2026',sec:'A',fac:'Prof. V. Harish',room:'AI-301'},
+  {br:'AIML',y:4,s:7,bat:'2021-2025',sec:'A',fac:'Dr. K. Aruna',room:'AI-401'},
+  {br:'MECH',y:1,s:1,bat:'2024-2028',sec:'A',fac:'Dr. M. Naidu',room:'ME-101'},
+  {br:'MECH',y:2,s:3,bat:'2023-2027',sec:'A',fac:'Prof. P. Rao',room:'ME-201'},
+  {br:'MECH',y:2,s:4,bat:'2023-2027',sec:'A',fac:'Dr. S. Kumar',room:'ME-201'},
+  {br:'MECH',y:3,s:5,bat:'2022-2026',sec:'A',fac:'Prof. R. Narayana',room:'ME-301'},
+  {br:'MECH',y:4,s:7,bat:'2021-2025',sec:'A',fac:'Dr. V. Raju',room:'ME-401'},
+  {br:'CIVIL',y:1,s:1,bat:'2024-2028',sec:'A',fac:'Dr. S. Reddy',room:'CV-101'},
+  {br:'CIVIL',y:2,s:3,bat:'2023-2027',sec:'A',fac:'Prof. V. Lakshmi',room:'CV-201'},
+  {br:'CIVIL',y:2,s:4,bat:'2023-2027',sec:'A',fac:'Dr. B. Mohan',room:'CV-201'},
+  {br:'CIVIL',y:3,s:5,bat:'2022-2026',sec:'A',fac:'Prof. N. Swathi',room:'CV-301'},
+  {br:'CIVIL',y:4,s:7,bat:'2021-2025',sec:'A',fac:'Dr. R. Prasad',room:'CV-401'},
+  {br:'EEE', y:1,s:1,bat:'2024-2028',sec:'A',fac:'Dr. B. Kishore',room:'EE-101'},
+  {br:'EEE', y:2,s:3,bat:'2023-2027',sec:'A',fac:'Prof. A. Nirmala',room:'EE-201'},
+  {br:'EEE', y:2,s:4,bat:'2023-2027',sec:'A',fac:'Dr. P. Saritha',room:'EE-201'},
+  {br:'EEE', y:3,s:5,bat:'2022-2026',sec:'A',fac:'Prof. G. Ravi',room:'EE-301'},
+  {br:'EEE', y:4,s:7,bat:'2021-2025',sec:'A',fac:'Dr. K. Sudha',room:'EE-401'},
+];
 
-// ── TAB SWITCHING ──
-function switchTab(group, id) {
-  const parent = event.target.closest('.page') || document.querySelector('.page.active');
-  parent.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
-  parent.querySelectorAll('.tab-content').forEach(c => c.classList.remove('active'));
-  event.target.classList.add('active');
-  const el = document.getElementById(group + '-' + id);
-  if(el) el.classList.add('active');
-}
+const ATT = [
+  {br:'CSE', bat:'2024-2028',yr:'1st Year',sem:'Sem 1 & 2',sec:'A, B',url:'https://erp.narayanaengg.ac.in/attendance/cse/2024'},
+  {br:'ECE', bat:'2024-2028',yr:'1st Year',sem:'Sem 1 & 2',sec:'A',   url:'https://erp.narayanaengg.ac.in/attendance/ece/2024'},
+  {br:'AIML',bat:'2024-2028',yr:'1st Year',sem:'Sem 1 & 2',sec:'A',   url:'https://erp.narayanaengg.ac.in/attendance/aiml/2024'},
+  {br:'MECH',bat:'2024-2028',yr:'1st Year',sem:'Sem 1 & 2',sec:'A',   url:'https://erp.narayanaengg.ac.in/attendance/mech/2024'},
+  {br:'CIVIL',bat:'2024-2028',yr:'1st Year',sem:'Sem 1 & 2',sec:'A',  url:'https://erp.narayanaengg.ac.in/attendance/civil/2024'},
+  {br:'EEE', bat:'2024-2028',yr:'1st Year',sem:'Sem 1 & 2',sec:'A',   url:'https://erp.narayanaengg.ac.in/attendance/eee/2024'},
+  {br:'CSE', bat:'2023-2027',yr:'2nd Year',sem:'Sem 3 & 4',sec:'A, B',url:'https://erp.narayanaengg.ac.in/attendance/cse/2023'},
+  {br:'ECE', bat:'2023-2027',yr:'2nd Year',sem:'Sem 3 & 4',sec:'A',   url:'https://erp.narayanaengg.ac.in/attendance/ece/2023'},
+  {br:'AIML',bat:'2023-2027',yr:'2nd Year',sem:'Sem 3 & 4',sec:'A',   url:'https://erp.narayanaengg.ac.in/attendance/aiml/2023'},
+  {br:'MECH',bat:'2023-2027',yr:'2nd Year',sem:'Sem 3 & 4',sec:'A',   url:'https://erp.narayanaengg.ac.in/attendance/mech/2023'},
+  {br:'CIVIL',bat:'2023-2027',yr:'2nd Year',sem:'Sem 3 & 4',sec:'A',  url:'https://erp.narayanaengg.ac.in/attendance/civil/2023'},
+  {br:'EEE', bat:'2023-2027',yr:'2nd Year',sem:'Sem 3 & 4',sec:'A',   url:'https://erp.narayanaengg.ac.in/attendance/eee/2023'},
+  {br:'CSE', bat:'2022-2026',yr:'3rd Year',sem:'Sem 5 & 6',sec:'A',   url:'https://erp.narayanaengg.ac.in/attendance/cse/2022'},
+  {br:'ECE', bat:'2022-2026',yr:'3rd Year',sem:'Sem 5 & 6',sec:'A',   url:'https://erp.narayanaengg.ac.in/attendance/ece/2022'},
+  {br:'AIML',bat:'2022-2026',yr:'3rd Year',sem:'Sem 5 & 6',sec:'A',   url:'https://erp.narayanaengg.ac.in/attendance/aiml/2022'},
+  {br:'MECH',bat:'2022-2026',yr:'3rd Year',sem:'Sem 5 & 6',sec:'A',   url:'https://erp.narayanaengg.ac.in/attendance/mech/2022'},
+  {br:'CIVIL',bat:'2022-2026',yr:'3rd Year',sem:'Sem 5 & 6',sec:'A',  url:'https://erp.narayanaengg.ac.in/attendance/civil/2022'},
+  {br:'EEE', bat:'2022-2026',yr:'3rd Year',sem:'Sem 5 & 6',sec:'A',   url:'https://erp.narayanaengg.ac.in/attendance/eee/2022'},
+  {br:'CSE', bat:'2021-2025',yr:'4th Year',sem:'Sem 7 & 8',sec:'A',   url:'https://erp.narayanaengg.ac.in/attendance/cse/2021'},
+  {br:'ECE', bat:'2021-2025',yr:'4th Year',sem:'Sem 7 & 8',sec:'A',   url:'https://erp.narayanaengg.ac.in/attendance/ece/2021'},
+  {br:'AIML',bat:'2021-2025',yr:'4th Year',sem:'Sem 7 & 8',sec:'A',   url:'https://erp.narayanaengg.ac.in/attendance/aiml/2021'},
+  {br:'MECH',bat:'2021-2025',yr:'4th Year',sem:'Sem 7 & 8',sec:'A',   url:'https://erp.narayanaengg.ac.in/attendance/mech/2021'},
+  {br:'CIVIL',bat:'2021-2025',yr:'4th Year',sem:'Sem 7 & 8',sec:'A',  url:'https://erp.narayanaengg.ac.in/attendance/civil/2021'},
+  {br:'EEE', bat:'2021-2025',yr:'4th Year',sem:'Sem 7 & 8',sec:'A',   url:'https://erp.narayanaengg.ac.in/attendance/eee/2021'},
+];
 
-// ── BOOKS DATA ──
-const booksData = {
-  cse: [
-    {title:'Data Structures & Algorithms', author:'Cormen et al.', sem:'Sem 3', icon:'📗', color:'#D1FAE5', url:'https://drive.google.com/file/dsa-nec'},
-    {title:'Database Management Systems', author:'Ramez Elmasri', sem:'Sem 4', icon:'📘', color:'#DBEAFE', url:'#'},
-    {title:'Operating Systems', author:'Silberschatz et al.', sem:'Sem 5', icon:'📙', color:'#FEF3C7', url:'#'},
-    {title:'Computer Networks', author:'Forouzan', sem:'Sem 5', icon:'📕', color:'#FEE2E2', url:'#'},
-    {title:'Compiler Design', author:'Alfred V. Aho', sem:'Sem 6', icon:'📓', color:'#F3E8FF', url:'#'},
-    {title:'Software Engineering', author:'Pressman', sem:'Sem 5', icon:'📒', color:'#FEF9C3', url:'#'},
-    {title:'Machine Learning', author:'Tom Mitchell', sem:'Sem 6', icon:'🤖', color:'#CCFBF1', url:'#'},
-    {title:'Cloud Computing', author:'Buyya et al.', sem:'Sem 7', icon:'☁️', color:'#E0F2FE', url:'#'},
-    {title:'Cryptography & Network Security', author:'William Stallings', sem:'Sem 7', icon:'🔐', color:'#FCE7F3', url:'#'},
-    {title:'Full Stack Web Development (Notes)', author:'NEC Dept.', sem:'Sem 6', icon:'🌐', color:'#D1FAE5', url:'#'},
-    {title:'Python Programming Lab Manual', author:'NEC CSE Dept.', sem:'Sem 3', icon:'🐍', color:'#FEF3C7', url:'#'},
-    {title:'CSE R20 Question Bank — All Sems', author:'NEC Exam Cell', sem:'All', icon:'📋', color:'#E0E7FF', url:'#'},
+const BATCHES = ['2024-2028','2023-2027','2022-2026','2021-2025'];
+const BLABELS = {'2024-2028':'Batch 2024–2028 (1st Year)','2023-2027':'Batch 2023–2027 (2nd Year)','2022-2026':'Batch 2022–2026 (3rd Year)','2021-2025':'Batch 2021–2025 (4th Year)'};
+const BICONS = {CSE:'💻',ECE:'📡',AIML:'🤖',MECH:'⚙️',CIVIL:'🏗️',EEE:'⚡'};
+
+const BOOKS = {
+  cse:[
+    {t:'Data Structures & Algorithms',a:'Cormen et al.',s:'Sem 3',i:'📗',c:'#D1FAE5'},
+    {t:'Database Management Systems',a:'Ramez Elmasri',s:'Sem 4',i:'📘',c:'#DBEAFE'},
+    {t:'Operating Systems',a:'Silberschatz et al.',s:'Sem 5',i:'📙',c:'#FEF3C7'},
+    {t:'Computer Networks',a:'Forouzan',s:'Sem 5',i:'📕',c:'#FEE2E2'},
+    {t:'Compiler Design',a:'Alfred V. Aho',s:'Sem 6',i:'📓',c:'#F3E8FF'},
+    {t:'Software Engineering',a:'Pressman',s:'Sem 5',i:'📒',c:'#FEF9C3'},
+    {t:'Machine Learning',a:'Tom Mitchell',s:'Sem 6',i:'🤖',c:'#CCFBF1'},
+    {t:'Cloud Computing',a:'Buyya et al.',s:'Sem 7',i:'☁️',c:'#E0F2FE'},
+    {t:'Cryptography & Network Security',a:'Stallings',s:'Sem 7',i:'🔐',c:'#FCE7F3'},
+    {t:'Full Stack Dev (NEC Notes)',a:'NEC CSE Dept.',s:'Sem 6',i:'🌐',c:'#D1FAE5'},
+    {t:'Python Lab Manual',a:'NEC CSE Dept.',s:'Sem 3',i:'🐍',c:'#FEF3C7'},
+    {t:'CSE R20 Question Bank',a:'NEC Exam Cell',s:'All',i:'📋',c:'#E0E7FF'},
   ],
-  ece: [
-    {title:'Signals & Systems', author:'Oppenheim & Willsky', sem:'Sem 3', icon:'📡', color:'#DBEAFE', url:'#'},
-    {title:'Electronic Devices & Circuits', author:'Boylestad', sem:'Sem 3', icon:'⚡', color:'#FEF3C7', url:'#'},
-    {title:'Digital Communications', author:'Haykin', sem:'Sem 5', icon:'📻', color:'#D1FAE5', url:'#'},
-    {title:'VLSI Design', author:'Weste & Harris', sem:'Sem 6', icon:'🔬', color:'#F3E8FF', url:'#'},
-    {title:'Microprocessors & Microcontrollers', author:'Ramesh Gaonkar', sem:'Sem 4', icon:'💾', color:'#FEE2E2', url:'#'},
-    {title:'Electromagnetic Theory', author:'Sadiku', sem:'Sem 4', icon:'🧲', color:'#CCFBF1', url:'#'},
+  ece:[
+    {t:'Signals & Systems',a:'Oppenheim',s:'Sem 3',i:'📡',c:'#DBEAFE'},
+    {t:'Electronic Devices & Circuits',a:'Boylestad',s:'Sem 3',i:'⚡',c:'#FEF3C7'},
+    {t:'Digital Communications',a:'Haykin',s:'Sem 5',i:'📻',c:'#D1FAE5'},
+    {t:'VLSI Design',a:'Weste & Harris',s:'Sem 6',i:'🔬',c:'#F3E8FF'},
+    {t:'Microprocessors & Microcontrollers',a:'Ramesh Gaonkar',s:'Sem 4',i:'💾',c:'#FEE2E2'},
+    {t:'Electromagnetic Theory',a:'Sadiku',s:'Sem 4',i:'🧲',c:'#CCFBF1'},
+    {t:'ECE R20 Question Bank',a:'NEC Exam Cell',s:'All',i:'📋',c:'#E0E7FF'},
   ],
-  aiml: [
-    {title:'Artificial Intelligence', author:'Russell & Norvig', sem:'Sem 5', icon:'🤖', color:'#CCFBF1', url:'#'},
-    {title:'Machine Learning (NEC Notes)', author:'NEC AIML Dept.', sem:'Sem 5', icon:'🧠', color:'#D1FAE5', url:'https://drive.google.com/aiml-ml-notes'},
-    {title:'Deep Learning', author:'Ian Goodfellow', sem:'Sem 6', icon:'🔮', color:'#F3E8FF', url:'#'},
-    {title:'Natural Language Processing', author:'Jurafsky & Martin', sem:'Sem 6', icon:'💬', color:'#DBEAFE', url:'#'},
-    {title:'Computer Vision', author:'Szeliski', sem:'Sem 7', icon:'👁️', color:'#FEF3C7', url:'#'},
-    {title:'Data Science with Python (Lab)', author:'NEC AIML Faculty', sem:'Sem 4', icon:'📊', color:'#FEE2E2', url:'#'},
-    {title:'Reinforcement Learning (Notes)', author:'NEC AIML Dept.', sem:'Sem 7', icon:'🎮', color:'#CCFBF1', url:'#'},
-    {title:'AIML Question Bank R20', author:'NEC Exam Cell', sem:'All', icon:'📋', color:'#E0E7FF', url:'#'},
+  aiml:[
+    {t:'Artificial Intelligence',a:'Russell & Norvig',s:'Sem 5',i:'🤖',c:'#CCFBF1'},
+    {t:'Machine Learning (NEC Notes)',a:'NEC AIML Dept.',s:'Sem 5',i:'🧠',c:'#D1FAE5'},
+    {t:'Deep Learning',a:'Ian Goodfellow',s:'Sem 6',i:'🔮',c:'#F3E8FF'},
+    {t:'Natural Language Processing',a:'Jurafsky & Martin',s:'Sem 6',i:'💬',c:'#DBEAFE'},
+    {t:'Computer Vision',a:'Szeliski',s:'Sem 7',i:'👁️',c:'#FEF3C7'},
+    {t:'Data Science with Python (Lab)',a:'NEC AIML Faculty',s:'Sem 4',i:'📊',c:'#FEE2E2'},
+    {t:'Reinforcement Learning (Notes)',a:'NEC AIML Dept.',s:'Sem 7',i:'🎮',c:'#CCFBF1'},
+    {t:'AIML R20 Question Bank',a:'NEC Exam Cell',s:'All',i:'📋',c:'#E0E7FF'},
   ],
-  mech: [
-    {title:'Engineering Mechanics', author:'Hibbeler', sem:'Sem 2', icon:'⚙️', color:'#FEF3C7', url:'#'},
-    {title:'Thermodynamics', author:'Cengel & Boles', sem:'Sem 3', icon:'🌡️', color:'#FEE2E2', url:'#'},
-    {title:'Machine Drawing', author:'K. L. Narayana', sem:'Sem 4', icon:'📐', color:'#DBEAFE', url:'#'},
-    {title:'Fluid Mechanics & Hydraulics', author:'Modi & Seth', sem:'Sem 4', icon:'💧', color:'#CCFBF1', url:'#'},
-    {title:'Strength of Materials (Civil)', author:'R.K. Bansal', sem:'Sem 3', icon:'🏗️', color:'#D1FAE5', url:'#'},
-    {title:'Surveying (Civil)', author:'B.C. Punmia', sem:'Sem 4', icon:'🗺️', color:'#F3E8FF', url:'#'},
+  mech:[
+    {t:'Engineering Mechanics',a:'Hibbeler',s:'Sem 2',i:'⚙️',c:'#FEF3C7'},
+    {t:'Thermodynamics',a:'Cengel & Boles',s:'Sem 3',i:'🌡️',c:'#FEE2E2'},
+    {t:'Machine Drawing',a:'K. L. Narayana',s:'Sem 4',i:'📐',c:'#DBEAFE'},
+    {t:'Fluid Mechanics',a:'Modi & Seth',s:'Sem 4',i:'💧',c:'#CCFBF1'},
+    {t:'Strength of Materials (Civil)',a:'R.K. Bansal',s:'Sem 3',i:'🏗️',c:'#D1FAE5'},
+    {t:'Surveying (Civil)',a:'B.C. Punmia',s:'Sem 4',i:'🗺️',c:'#F3E8FF'},
   ],
-  common: [
-    {title:'Engineering Mathematics – I (R20)', author:'JNTUA Syllabus Book', sem:'Sem 1', icon:'📐', color:'#DBEAFE', url:'#'},
-    {title:'Engineering Mathematics – II (R20)', author:'JNTUA Syllabus Book', sem:'Sem 2', icon:'📐', color:'#DBEAFE', url:'#'},
-    {title:'Engineering Chemistry (R20)', author:'P.C. Jain', sem:'Sem 1', icon:'⚗️', color:'#D1FAE5', url:'#'},
-    {title:'Engineering Physics (R20)', author:'Halliday & Resnick', sem:'Sem 2', icon:'🔭', color:'#FEF3C7', url:'#'},
-    {title:'English Communication Skills (R20)', author:'NEC English Dept.', sem:'Sem 1', icon:'✍️', color:'#FEE2E2', url:'#'},
-    {title:'Basic Electrical & Electronics', author:'Nagrath & Kothari', sem:'Sem 2', icon:'💡', color:'#F3E8FF', url:'#'},
-    {title:'Environmental Science', author:'Benny Joseph', sem:'Sem 3', icon:'🌿', color:'#CCFBF1', url:'#'},
-    {title:'R20 Common Regulation PDF', author:'JNTUA', sem:'—', icon:'📜', color:'#E0E7FF', url:'https://jntua.ac.in/r20-regulations'},
+  common:[
+    {t:'Engg. Mathematics – I (R20)',a:'JNTUA',s:'Sem 1',i:'📐',c:'#DBEAFE'},
+    {t:'Engg. Mathematics – II (R20)',a:'JNTUA',s:'Sem 2',i:'📐',c:'#DBEAFE'},
+    {t:'Engineering Chemistry (R20)',a:'P.C. Jain',s:'Sem 1',i:'⚗️',c:'#D1FAE5'},
+    {t:'Engineering Physics (R20)',a:'Halliday',s:'Sem 2',i:'🔭',c:'#FEF3C7'},
+    {t:'English Communication (R20)',a:'NEC English',s:'Sem 1',i:'✍️',c:'#FEE2E2'},
+    {t:'Basic Electrical & Electronics',a:'Nagrath & Kothari',s:'Sem 2',i:'💡',c:'#F3E8FF'},
+    {t:'Environmental Science',a:'Benny Joseph',s:'Sem 3',i:'🌿',c:'#CCFBF1'},
+    {t:'R20 Regulation PDF',a:'JNTUA',s:'—',i:'📜',c:'#E0E7FF'},
   ]
 };
 
-function renderBooks() {
-  Object.keys(booksData).forEach(branch => {
-    const grid = document.getElementById('book-grid-' + branch);
-    if(!grid) return;
-    grid.innerHTML = booksData[branch].map(b => `
-      <div class="book-card" onclick="window.open('${b.url}','_blank')">
-        <div class="book-cover" style="background:${b.color}">${b.icon}</div>
-        <div class="book-body">
-          <h4>${b.title}</h4>
-          <p>${b.author} · <span class="badge badge-gray" style="font-size:0.7rem">${b.sem}</span></p>
-          <button class="book-btn">📥 Download PDF</button>
+/* ─── NAVIGATION ─── */
+let curBranch = 'CSE';
+function showPage(id) {
+  document.querySelectorAll('.page').forEach(p=>p.classList.remove('active'));
+  document.getElementById('page-'+id).classList.add('active');
+  document.querySelectorAll('.nav .nav-link').forEach(b=>b.classList.remove('active'));
+  const idx={home:0,timetable:1,fees:2,attendance:3,books:4};
+  const btns=document.querySelectorAll('.nav .nav-link');
+  if(idx[id]!==undefined)btns[idx[id]].classList.add('active');
+  window.scrollTo(0,0);
+  if(id==='timetable')ttRender();
+  if(id==='attendance')attRender();
+  if(id==='books')bkRenderAll();
+}
+function toggleMobile(){document.getElementById('hb').classList.toggle('open');document.getElementById('mm').classList.toggle('open')}
+function closeMobile(){document.getElementById('hb').classList.remove('open');document.getElementById('mm').classList.remove('open')}
+document.addEventListener('click',e=>{const mm=document.getElementById('mm');if(mm.classList.contains('open')&&!e.target.closest('.nav')&&!e.target.closest('#mm'))closeMobile()});
+
+/* ─── GENERIC TAB ─── */
+function gTab(prefix,id){
+  const pg=document.querySelector('.page.active');
+  pg.querySelectorAll('.tab-btn').forEach(b=>b.classList.remove('active'));
+  pg.querySelectorAll('.tab-content').forEach(c=>c.classList.remove('active'));
+  event.target.classList.add('active');
+  const el=document.getElementById(prefix+'-'+id);
+  if(el)el.classList.add('active');
+}
+
+/* ─── TIMETABLE ─── */
+const ordinal=n=>n===1?'1st':n===2?'2nd':n===3?'3rd':'4th';
+const sBadge=s=>s<=2?'badge-blue':s<=4?'badge-green':s<=6?'badge-yellow':'badge-red';
+
+function ttBranch(btn){
+  document.querySelectorAll('#tt-tabs .tab-btn').forEach(b=>b.classList.remove('active'));
+  btn.classList.add('active');
+  curBranch=btn.dataset.br;
+  document.getElementById('tt-yr').value='';
+  document.getElementById('tt-sem').value='';
+  document.getElementById('tt-bat').value='';
+  ttRender();
+}
+
+function ttRender(){
+  const yr=document.getElementById('tt-yr').value;
+  const sm=document.getElementById('tt-sem').value;
+  const bt=document.getElementById('tt-bat').value;
+  let rows=TT.filter(r=>r.br===curBranch);
+  if(yr) rows=rows.filter(r=>r.y===parseInt(yr));
+  if(sm) rows=rows.filter(r=>r.s===parseInt(sm));
+  if(bt) rows=rows.filter(r=>r.bat===bt);
+  const tbody=document.getElementById('tt-body');
+  const empty=document.getElementById('tt-empty');
+  const countEl=document.getElementById('tt-count');
+  countEl.style.display='';
+  countEl.textContent=rows.length+' result'+(rows.length!==1?'s':'');
+  if(rows.length===0){tbody.innerHTML='';empty.style.display='';return}
+  empty.style.display='none';
+  tbody.innerHTML=rows.map(r=>`<tr>
+    <td>${ordinal(r.y)} Year</td>
+    <td><span class="badge ${sBadge(r.s)}">Sem ${r.s}</span></td>
+    <td>${r.bat.replace('-','–')}</td>
+    <td>Sec ${r.sec}</td>
+    <td>${r.fac}</td>
+    <td>${r.room}</td>
+    <td><button onclick="chatQ('${r.br} ${ordinal(r.y)} year Sem ${r.s} timetable ${r.bat} batch')" style="background:none;border:1.5px solid var(--teal);color:var(--teal);padding:.28rem .6rem;border-radius:6px;font-size:.74rem;font-weight:600;cursor:pointer;font-family:'DM Sans',sans-serif;white-space:nowrap">📄 Ask AI</button></td>
+  </tr>`).join('');
+}
+
+/* ─── ATTENDANCE ─── */
+function attRender(){
+  const brF=document.getElementById('att-br').value;
+  const btF=document.getElementById('att-bat').value;
+  let data=ATT;
+  if(brF) data=data.filter(d=>d.br===brF);
+  if(btF) data=data.filter(d=>d.bat===btF);
+  const cont=document.getElementById('att-content');
+  if(data.length===0){cont.innerHTML='<div class="empty-state"><div class="empty-icon">🔍</div><h4>No results</h4><p>Try different filters</p></div>';return}
+  const batchesToShow=BATCHES.filter(b=>!btF||b===btF);
+  let html='';
+  batchesToShow.forEach(batch=>{
+    const items=data.filter(d=>d.bat===batch);
+    if(!items.length)return;
+    html+=`<div class="batch-heading">${BLABELS[batch]}</div><div class="card-grid">`;
+    items.forEach(item=>{
+      html+=`<div class="att-card">
+        <div class="att-card-top">
+          <div class="att-icon">${BICONS[item.br]||'📋'}</div>
+          <div><div class="att-card-title">${item.br} — ${item.yr}</div><div class="att-card-sub">${item.sem} · Sections: ${item.sec}</div></div>
         </div>
-      </div>
-    `).join('');
+        <div class="att-card-meta">
+          <span class="badge badge-teal">Batch ${item.bat.replace('-','–')}</span>
+          <span class="badge badge-gray">${item.br}</span>
+        </div>
+        <a class="att-link" href="${item.url}" target="_blank">🔗 Open Attendance Portal</a>
+      </div>`;
+    });
+    html+='</div>';
   });
+  cont.innerHTML=html;
 }
 
-function filterBooks(input) {
-  const val = input.value.toLowerCase();
-  document.querySelectorAll('#bk-cse .book-card').forEach(c => {
-    c.style.display = c.textContent.toLowerCase().includes(val) ? '' : 'none';
-  });
+/* ─── BOOKS ─── */
+function bkCard(b){return`<div class="book-card" onclick="window.open('#','_blank')">
+  <div class="book-cover" style="background:${b.c}">${b.i}</div>
+  <div class="book-body"><h4>${b.t}</h4><p>${b.a} · <span class="badge badge-gray" style="font-size:.67rem">${b.s}</span></p>
+  <button class="book-btn">📥 Download PDF</button></div>
+</div>`;}
+function bkRenderAll(){Object.keys(BOOKS).forEach(k=>{const g=document.getElementById('bg-'+k);if(g)g.innerHTML=BOOKS[k].map(bkCard).join('')})}
+function bkFilter(k){
+  const q=(document.getElementById('bk-s-'+k)||{value:''}).value.toLowerCase();
+  const sm=(document.getElementById('bk-sem-'+k)||{value:''}).value;
+  const grid=document.getElementById('bg-'+k);
+  const empty=document.getElementById('be-'+k);
+  const filtered=BOOKS[k].filter(b=>(!q||b.t.toLowerCase().includes(q)||b.a.toLowerCase().includes(q))&&(!sm||b.s===sm));
+  if(empty) empty.style.display=filtered.length?'none':'';
+  if(grid) grid.innerHTML=filtered.map(bkCard).join('');
 }
 
-// ── ATTENDANCE LINKS DATA ──
-const attLinks = [
-  {branch:'CSE', year:'1st Year', sem:'Sem 1 (Odd)', batch:'2024–2028', url:'https://jntua.ac.in/attendance/cse-1-1-2024', section:'A & B'},
-  {branch:'CSE', year:'1st Year', sem:'Sem 2 (Even)', batch:'2024–2028', url:'https://jntua.ac.in/attendance/cse-1-2-2024', section:'A & B'},
-  {branch:'CSE', year:'2nd Year', sem:'Sem 3 (Odd)', batch:'2023–2027', url:'https://jntua.ac.in/attendance/cse-2-1-2023', section:'A & B'},
-  {branch:'CSE', year:'2nd Year', sem:'Sem 4 (Even)', batch:'2023–2027', url:'https://jntua.ac.in/attendance/cse-2-2-2023', section:'A & B'},
-  {branch:'CSE', year:'3rd Year', sem:'Sem 5 (Odd)', batch:'2022–2026', url:'https://jntua.ac.in/attendance/cse-3-1-2022', section:'A'},
-  {branch:'CSE', year:'3rd Year', sem:'Sem 6 (Even)', batch:'2022–2026', url:'https://jntua.ac.in/attendance/cse-3-2-2022', section:'A'},
-  {branch:'CSE', year:'4th Year', sem:'Sem 7 (Odd)', batch:'2021–2025', url:'https://jntua.ac.in/attendance/cse-4-1-2021', section:'A'},
-  {branch:'CSE', year:'4th Year', sem:'Sem 8 (Even)', batch:'2021–2025', url:'https://jntua.ac.in/attendance/cse-4-2-2021', section:'A'},
-  {branch:'ECE', year:'2nd Year', sem:'Sem 3 (Odd)', batch:'2023–2027', url:'https://jntua.ac.in/attendance/ece-2-1-2023', section:'A'},
-  {branch:'ECE', year:'2nd Year', sem:'Sem 4 (Even)', batch:'2023–2027', url:'https://jntua.ac.in/attendance/ece-2-2-2023', section:'A'},
-  {branch:'ECE', year:'3rd Year', sem:'Sem 5 (Odd)', batch:'2022–2026', url:'https://jntua.ac.in/attendance/ece-3-1-2022', section:'A'},
-  {branch:'AI & ML', year:'1st Year', sem:'Sem 1 (Odd)', batch:'2024–2028', url:'https://jntua.ac.in/attendance/aiml-1-1-2024', section:'A'},
-  {branch:'AI & ML', year:'2nd Year', sem:'Sem 3 (Odd)', batch:'2023–2027', url:'https://jntua.ac.in/attendance/aiml-2-1-2023', section:'A'},
-  {branch:'AI & ML', year:'2nd Year', sem:'Sem 4 (Even)', batch:'2023–2027', url:'https://jntua.ac.in/attendance/aiml-2-2-2023', section:'A'},
-  {branch:'Mechanical', year:'2nd Year', sem:'Sem 3 (Odd)', batch:'2023–2027', url:'https://jntua.ac.in/attendance/mech-2-1-2023', section:'A'},
-  {branch:'Civil', year:'2nd Year', sem:'Sem 4 (Even)', batch:'2023–2027', url:'https://jntua.ac.in/attendance/civil-2-2-2023', section:'A'},
-  {branch:'EEE', year:'3rd Year', sem:'Sem 5 (Odd)', batch:'2022–2026', url:'https://jntua.ac.in/attendance/eee-3-1-2022', section:'A'},
-];
+/* ─── CHATBOT ─── */
+let chatOpen=false,labelGone=false;
+function toggleChat(){
+  chatOpen=!chatOpen;
+  document.getElementById('cw').classList.toggle('open',chatOpen);
+  if(chatOpen&&!labelGone){document.getElementById('cl').style.display='none';labelGone=true}
+  if(chatOpen&&!document.getElementById('cb').children.length)
+    setTimeout(()=>botMsg("👋 Hi! I'm the **NEC College Assistant**.\n\nI can help with:\n• **Attendance links** — batch & branch wise\n• **Timetables** — branch, year, semester\n• **Fee info** — due dates, scholarships, payments\n• **Books & PDFs** — any subject\n• **College info** — contact, placements, hostel\n\nTry: *'CSE 2nd year attendance 2023–2027'*"),350);
+}
+setTimeout(()=>{const l=document.getElementById('cl');l.style.opacity='0';setTimeout(()=>l.style.display='none',500)},5000);
 
-function renderAttLinks(filterBranch='all', filterYear='all', filterBatch='all') {
-  const grid = document.getElementById('att-link-grid');
-  if(!grid) return;
-  let filtered = attLinks;
-  if(filterBranch !== 'all') filtered = filtered.filter(a => a.branch.toLowerCase().includes(filterBranch));
-  if(filterYear !== 'all') filtered = filtered.filter(a => a.year.startsWith(filterYear + 'st') || a.year.startsWith(filterYear + 'nd') || a.year.startsWith(filterYear + 'rd') || a.year.startsWith(filterYear + 'th'));
-  if(filterBatch !== 'all') filtered = filtered.filter(a => a.batch.replace('–','-') === filterBatch);
-  grid.innerHTML = filtered.map(a => `
-    <div class="link-card">
-      <div class="lc-top">
-        <div class="lc-icon lc-teal">✅</div>
-        <span class="link-arrow">→</span>
-      </div>
-      <h4>${a.branch} — ${a.year} ${a.sem}</h4>
-      <p>Batch: <strong>${a.batch}</strong> | Section: ${a.section}</p>
-      <a href="${a.url}" target="_blank">Open Attendance Portal →</a>
-    </div>
-  `).join('') || '<p style="color:var(--gray)">No results found for the selected filters.</p>';
+const now=()=>new Date().toLocaleTimeString('en-IN',{hour:'2-digit',minute:'2-digit'});
+function esc(s){return s.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;')}
+
+function userMsg(t){
+  const b=document.getElementById('cb');
+  const m=document.createElement('div');m.className='msg user';
+  m.innerHTML=`<div class="msg-bubble">${esc(t)}</div><span class="msg-time">${now()}</span>`;
+  b.appendChild(m);b.scrollTop=b.scrollHeight;
+}
+function botMsg(text,extra=''){
+  const b=document.getElementById('cb');
+  const typing=document.createElement('div');typing.className='msg bot';
+  typing.innerHTML='<div class="bot-typing"><div class="dot"></div><div class="dot"></div><div class="dot"></div></div>';
+  b.appendChild(typing);b.scrollTop=b.scrollHeight;
+  setTimeout(()=>{
+    try{b.removeChild(typing)}catch(e){}
+    const m=document.createElement('div');m.className='msg bot';
+    const fmt=text.replace(/\*\*(.*?)\*\*/g,'<strong>$1</strong>').replace(/\*(.*?)\*/g,'<em>$1</em>').replace(/\n/g,'<br>');
+    m.innerHTML=`<div class="msg-bubble">${fmt}</div>${extra}<span class="msg-time">${now()}</span>`;
+    b.appendChild(m);b.scrollTop=b.scrollHeight;
+  },850);
 }
 
-function filterAttLinks() {
-  const b = document.getElementById('att-branch').value;
-  const y = document.getElementById('att-year').value;
-  const bt = document.getElementById('att-batch').value;
-  renderAttLinks(b==='All Branches'?'all':b.toLowerCase(), y==='All Years'?'all':y.replace(/[a-z]+/gi,'').trim(), bt==='All Batches'?'all':bt.replace('–','-'));
+function ciSend(){
+  const inp=document.getElementById('ci');
+  const t=inp.value.trim();if(!t)return;
+  userMsg(t);inp.value='';inp.style.height='auto';
+  document.getElementById('chips').style.display='none';
+  setTimeout(()=>respond(t),150);
 }
+function useChip(el){document.getElementById('ci').value=el.textContent;ciSend()}
+function ciKey(e){if(e.key==='Enter'&&!e.shiftKey){e.preventDefault();ciSend()}}
+function ciResize(el){el.style.height='auto';el.style.height=Math.min(el.scrollHeight,88)+'px'}
+function chatQ(q){if(!chatOpen)toggleChat();setTimeout(()=>{document.getElementById('ci').value=q;ciSend()},chatOpen?0:450)}
 
-// ── CHATBOT KNOWLEDGE BASE ──
-const KB = {
-  greetings: ['hi','hello','hey','good morning','good afternoon','good evening','hii','helo'],
-  attendance: attLinks,
-  books: booksData,
-};
-
-function matchAttendance(q) {
-  q = q.toLowerCase();
-  const branchMap = {cse:'CSE',ece:'ECE','ai':'AI & ML','aiml':'AI & ML','ml':'AI & ML','mech':'Mechanical','civil':'Civil','eee':'EEE'};
-  const yearMap = {'1st':'1st','first':'1st','2nd':'2nd','second':'2nd','3rd':'3rd','third':'3rd','4th':'4th','fourth':'4th'};
-  const semMap = {'sem 1':'Sem 1','semester 1':'Sem 1','1st sem':'Sem 1','sem 2':'Sem 2','semester 2':'Sem 2','2nd sem':'Sem 2','sem 3':'Sem 3','3rd sem':'Sem 3','sem 4':'Sem 4','4th sem':'Sem 4','sem 5':'Sem 5','5th sem':'Sem 5','sem 6':'Sem 6','6th sem':'Sem 6','sem 7':'Sem 7','sem 8':'Sem 8'};
-  const batchMap = {'2022':'2022–2026','2023':'2023–2027','2024':'2024–2028','2021':'2021–2025'};
-
-  let branch=null, year=null, sem=null, batch=null;
-  for(const[k,v] of Object.entries(branchMap)) { if(q.includes(k)) { branch=v; break; } }
-  for(const[k,v] of Object.entries(yearMap)) { if(q.includes(k)) { year=v; break; } }
-  for(const[k,v] of Object.entries(semMap)) { if(q.includes(k)) { sem=v; break; } }
-  for(const[k,v] of Object.entries(batchMap)) { if(q.includes(k)) { batch=v; break; } }
-
-  let results = KB.attendance;
-  if(branch) results = results.filter(a => a.branch === branch);
-  if(year) results = results.filter(a => a.year.startsWith(year));
-  if(sem) results = results.filter(a => a.sem.toLowerCase().startsWith(sem.toLowerCase()));
-  if(batch) results = results.filter(a => a.batch === batch);
-  return results;
-}
-
-function matchBooks(q) {
-  q = q.toLowerCase();
-  const branchMap = {cse:'cse',ece:'ece','aiml':'aiml','ai ml':'aiml','ai & ml':'aiml','ai and ml':'aiml','machine learning':'aiml','mech':'mech','civil':'mech','common':'common'};
-  let branch = null;
-  for(const[k,v] of Object.entries(branchMap)) { if(q.includes(k)) { branch=v; break; } }
-  if(!branch) {
-    // search all
-    const allBooks = Object.values(booksData).flat();
-    const matches = allBooks.filter(b => b.title.toLowerCase().includes(q) || b.sem.toLowerCase().includes(q) || b.author.toLowerCase().includes(q));
-    return matches;
-  }
-  return booksData[branch] || [];
-}
-
-function processQuery(query) {
-  const q = query.toLowerCase().trim();
+/* ─── BOT RESPONSE ENGINE ─── */
+function respond(raw){
+  const q=raw.toLowerCase();
 
   // Greetings
-  if(KB.greetings.some(g => q === g || q.startsWith(g+' '))) {
-    return { type:'text', text:"Hello! 👋 I'm the NEC College Assistant. I can help you with:\n• Attendance portal links\n• Timetables\n• Fee details & due dates\n• Books & study materials\n\nWhat would you like to know?" };
-  }
-
-  // About college
-  if(q.includes('about') && (q.includes('college') || q.includes('nec') || q.includes('narayana'))) {
-    return { type:'text', text:"🏛️ **Narayana Engineering College**\nEstablished: 2001 | Gudur, Tirupati Dist., AP - 524101\nAffiliated to JNTUA, Approved by AICTE\nNAAC Accredited (A Grade)\n\n🎓 Programmes: B.Tech (6 branches), M.Tech, MBA\n👩‍🏫 Faculty: 120+ experienced professors\n💼 Placement: 95% rate, 250+ companies\n📞 Contact: +91-86880 00005" };
-  }
+  if(/^(hi|hello|hey|hii|helo|good\s*(morning|afternoon|evening))[\s!]*$/.test(q))
+    return botMsg("Hello! 👋 How can I help you today?");
 
   // Attendance
-  if(q.includes('attendance') || q.includes('portal') || (q.includes('link') && (q.includes('year') || q.includes('batch') || q.includes('sem')))) {
-    const matches = matchAttendance(q);
-    if(matches.length === 0) return { type:'text', text:"I couldn't find an exact match for your query. Please try specifying the branch, year, semester, and batch. For example: *'Attendance link for 2nd year CSE Sem 4 2023–2027 batch'*" };
-    if(matches.length === 1) return { type:'links', text:`Here is the attendance portal for **${matches[0].branch} ${matches[0].year} ${matches[0].sem}** (Batch ${matches[0].batch}):`, links: matches };
-    return { type:'links', text:`Found ${matches.length} matching attendance portal(s):`, links: matches };
+  if(q.includes('attendance')||(q.includes('link')&&(q.includes('batch')||q.includes('year')||q.includes('sem')))){
+    const BM={cse:'CSE',ece:'ECE','ai & ml':'AIML',aiml:'AIML','ai ml':'AIML',ai:'AIML',mech:'MECH',civil:'CIVIL',eee:'EEE'};
+    const YM={'1st year':'2024-2028','first year':'2024-2028','2nd year':'2023-2027','second year':'2023-2027','3rd year':'2022-2026','third year':'2022-2026','4th year':'2021-2025','fourth year':'2021-2025'};
+    let br=null,bat=null;
+    for(const[k,v]of Object.entries(BM)){if(q.includes(k)){br=v;break}}
+    for(const[k,v]of Object.entries(YM)){if(q.includes(k)){bat=v;break}}
+    const m=q.match(/20\d\d[-–]20\d\d/);if(m)bat=m[0].replace('–','-');
+    const yr4=q.match(/\b(2021|2022|2023|2024)\b/);if(yr4&&!bat){const map={'2021':'2021-2025','2022':'2022-2026','2023':'2023-2027','2024':'2024-2028'};bat=map[yr4[1]];}
+    let res=ATT;
+    if(br)res=res.filter(d=>d.br===br);
+    if(bat)res=res.filter(d=>d.bat===bat);
+    if(!res.length)return botMsg("Couldn't find a match. Try: *'CSE 2nd year attendance 2023–2027'* or *'AIML attendance 2024 batch'*");
+    const cards=res.slice(0,6).map(r=>`<div class="result-card"><h5>${BICONS[r.br]||'📋'} ${r.br} — ${r.yr} (${r.sem})</h5><p>Batch: <strong>${r.bat.replace('-','–')}</strong> · Sections: ${r.sec}</p><a href="${r.url}" target="_blank">🔗 Open Attendance Portal →</a></div>`).join('');
+    return botMsg(`Found **${res.length}** attendance portal${res.length>1?'s':''}:`,cards);
   }
 
   // Timetable
-  if(q.includes('timetable') || q.includes('time table') || q.includes('schedule') || q.includes('class timing')) {
-    const branchMap = {cse:'CSE',ece:'ECE','aiml':'AI & ML','mech':'Mechanical','civil':'Civil'};
-    let b = null;
-    for(const[k,v] of Object.entries(branchMap)) { if(q.includes(k)) { b=v; break; } }
-    const yearM = q.match(/(\d)(st|nd|rd|th)\s*year/i);
-    const semM = q.match(/sem(ester)?\s*(\d)/i);
-    if(b || yearM || semM) {
-      return { type:'text', text:`📅 Timetable for ${b||'your branch'} ${yearM?yearM[0]:''} ${semM?'Sem '+semM[2]:''}:\n\nTimetables are available on the Timetables page. Click below to view, or visit the NEC ERP portal at erp.narayanaengg.ac.in with your student ID.\n\n💡 Tip: You can also ask faculty incharge or check the department notice board.`, action: {label:'Go to Timetables', page:'timetable'} };
-    }
-    return { type:'text', text:"📅 You can find all timetables on the **Timetables** section, organized by branch and year. Would you like me to take you there?", action:{label:'Open Timetables',page:'timetable'} };
+  if(q.includes('timetable')||q.includes('time table')||q.includes('schedule')||q.includes('class timing')){
+    const BM={cse:'CSE',ece:'ECE',aiml:'AIML',ai:'AIML',mech:'MECH',civil:'CIVIL',eee:'EEE'};
+    let br=null;for(const[k,v]of Object.entries(BM)){if(q.includes(k)){br=v;break}}
+    const extra=`<button class="action-btn" onclick="showPage('timetable');${br?`document.querySelector('[data-br=${br}]').click();`:''}" >📅 View Timetables →</button>`;
+    return botMsg(`Timetables for **${br||'all branches'}** are on the Timetables page.\nUse the filters to select year, semester and batch.`,extra);
   }
 
-  // Fee queries
-  if(q.includes('fee') || q.includes('payment') || q.includes('due date') || q.includes('scholarship') || q.includes('pay')) {
-    if(q.includes('due') || q.includes('date') || q.includes('deadline') || q.includes('last date')) {
-      return { type:'text', text:"📅 **Upcoming Fee Due Dates:**\n• Sem 4 (Even) — Batch 2023–27: **15 March 2025** ⚠️ Overdue\n• Sem 2 (Even) — Batch 2024–28: **20 March 2025**\n• Sem 6 (Even) — Batch 2022–26: **25 March 2025**\n• Sem 8 (Even) — Batch 2021–25: **10 April 2025**\n\nLate fine: ₹500 per week. Pay at erp.narayanaengg.ac.in" };
+  // Books
+  if(q.includes('book')||q.includes('pdf')||q.includes('note')||q.includes('material')||q.includes('syllabus')||q.includes('question bank')||q.includes('lab manual')){
+    const allBooks=Object.values(BOOKS).flat();
+    const kw=q.replace(/(pdf|notes?|books?|materials?|download|lab|manual|question|bank|syllabus)/g,' ').trim().split(/\s+/).filter(w=>w.length>2);
+    const found=allBooks.filter(b=>kw.some(w=>b.t.toLowerCase().includes(w)||b.a.toLowerCase().includes(w)));
+    if(found.length){
+      const cards=found.slice(0,4).map(b=>`<div class="result-card"><h5>${b.i} ${b.t}</h5><p>${b.a} · ${b.s}</p><a href="#" target="_blank">📥 Download PDF →</a></div>`).join('');
+      return botMsg(`Found **${found.length}** material(s):`,cards);
     }
-    if(q.includes('scholarship')) {
-      return { type:'text', text:"🎓 **Scholarship Options at NEC:**\n• AP State Scholarship (EAMCET rank < 5000): Up to ₹35,000/yr\n• Merit Scholarship (SGPA ≥ 9.0): Full fee waiver\n• BC/SC/ST Fee Reimbursement: AP Govt portal\n• Minority Scholarship: ₹30,000/yr via scholarships.gov.in\n\nFor details, visit the Fees section or contact the Accounts Office." };
-    }
-    if(q.includes('exam fee') || q.includes('jntua fee')) {
-      return { type:'text', text:"📋 **JNTUA Exam Fee:**\nAmount: ₹4,500 per semester\nPayment: jntua.ac.in/examfee\nLogin with your Hall Ticket number.\n\nExam fee must be paid before filling the exam form. Check the notice board for exact deadlines." };
-    }
-    return { type:'text', text:"💳 **Fee Structure (Per Semester):**\n• CSE/AIML/ECE: ~₹52,000 (includes tuition + dev + lab + exam)\n• Mech/Civil/EEE: ~₹47,000\n• Hostel: ₹12,000/semester\n\nPay at: **erp.narayanaengg.ac.in**\n\nWant due dates, scholarships, or the payment link?", action:{label:'View Full Fee Details',page:'fees'} };
+    const extra=`<button class="action-btn" onclick="showPage('books')">📚 Browse Books →</button>`;
+    return botMsg("Study materials available in the **Books** section.\nBranches: CSE, ECE, AI & ML, Mech/Civil, Common (R20)\n\nWhich subject are you looking for?",extra);
   }
 
-  // Books / Materials
-  if(q.includes('book') || q.includes('pdf') || q.includes('notes') || q.includes('material') || q.includes('syllabus') || q.includes('question bank') || q.includes('lab manual') || q.includes('reference')) {
-    const matches = matchBooks(q);
-    if(matches.length > 0) {
-      const top = matches.slice(0,4);
-      return { type:'books', text:`📚 Found ${matches.length} material(s) matching your query:`, books: top };
-    }
-    return { type:'text', text:"📚 Study materials are available in the **Books & Materials** section organized by branch. You can find:\n• Textbooks & reference PDFs\n• NEC Faculty notes\n• Question banks\n• Lab manuals\n\nWhich branch/subject are you looking for?", action:{label:'Browse Books',page:'books'} };
+  // Fee
+  if(q.includes('fee')||q.includes('payment')||q.includes('scholarship')||q.includes('due')||q.includes('pay')){
+    if(q.includes('scholarship'))return botMsg("🎓 **Scholarships at NEC:**\n• **AP State Scholarship** — rank < 5000, up to ₹35,000/yr\n• **Merit Award** — SGPA ≥ 9.0, full fee waiver\n• **BC/SC/ST Reimbursement** — via AP Govt portal\n• **Minority** — up to ₹30,000/yr\n\nSee Fees → Scholarships for apply links.");
+    if(q.includes('due')||q.includes('deadline')||q.includes('last date'))return botMsg("📅 **Upcoming Due Dates:**\n• Sem 4 Batch 2023–27: **15 Mar 2025** ⚠️ Overdue\n• Sem 2 Batch 2024–28: **20 Mar 2025**\n• Sem 6 Batch 2022–26: **25 Mar 2025**\n• Sem 8 Batch 2021–25: **10 Apr 2025**\n\nLate fine: ₹500/week. Pay: **erp.narayanaengg.ac.in**");
+    if(q.includes('exam fee'))return botMsg("📋 **JNTUA Exam Fee:** ₹4,500/semester\nPay at: **jntua.ac.in** with your Hall Ticket No.");
+    const extra=`<button class="action-btn" onclick="showPage('fees')">💳 Fee Info →</button>`;
+    return botMsg("💳 **Fee Overview:**\n• CSE/AIML/ECE: ~₹85,000/year\n• Mech/Civil/EEE: ~₹78,000/year\n• Hostel: ₹12,000/semester\n\nFor your personal balance, login to **erp.narayanaengg.ac.in**",extra);
   }
 
-  // Contact / Office
-  if(q.includes('contact') || q.includes('phone') || q.includes('email') || q.includes('address') || q.includes('principal') || q.includes('office')) {
-    return { type:'text', text:"📞 **NEC Contact Details:**\n🏛️ Narayana Engineering College\nDhurjati Nagar, Gudur, Tirupati Dist., AP - 524101\n\n📞 Main: +91-86880 00005\n✉️ info@narayanaengg.ac.in\n\n👨‍💼 Principal's Office: +91-86880 00001\n📋 Exam Cell: +91-86880 00003\n💼 Placements: +91-86880 00004\n🕐 Office Hours: Mon–Sat, 9 AM – 5 PM" };
-  }
+  // Contact
+  if(q.includes('contact')||q.includes('phone')||q.includes('address')||q.includes('principal')||q.includes('email'))
+    return botMsg("📞 **NEC Contact:**\n📍 Dhurjati Nagar, Gudur, Tirupati Dist., AP - 524101\n📞 Main: +91-86880 00005\n✉️ info@narayanaengg.ac.in\n\n👨‍💼 Principal: +91-86880 00001\n📋 Exam Cell: +91-86880 00003\n💼 Placements: +91-86880 00004\n🕐 Mon–Sat, 9 AM – 5 PM");
 
   // Placement
-  if(q.includes('placement') || q.includes('job') || q.includes('company') || q.includes('package') || q.includes('recruit')) {
-    return { type:'text', text:"💼 **NEC Placements 2024–25:**\n• 250+ companies visited campus\n• 800+ job offers extended\n• Highest Package: ₹18.5 LPA\n• Average Package: ₹5.2 LPA\n\n🏆 Top Recruiters: TCS, Infosys, Wipro, Cognizant, HCL, Capgemini, Tech Mahindra, Amazon (select)\n\n📩 Contact Placement Cell: placements@narayanaengg.ac.in | +91-86880 00004" };
-  }
+  if(q.includes('placement')||q.includes('job')||q.includes('package')||q.includes('recruit')||q.includes('company'))
+    return botMsg("💼 **NEC Placements 2024–25:**\n• 250+ companies visited\n• 800+ offers extended\n• Highest: **₹18.5 LPA**\n• Average: **₹5.2 LPA**\n\n🏆 Top: TCS, Infosys, Wipro, Cognizant, HCL, Tech Mahindra\n\n📩 placements@narayanaengg.ac.in | +91-86880 00004");
 
   // Hostel
-  if(q.includes('hostel') || q.includes('accommodation') || q.includes('room')) {
-    return { type:'text', text:"🏠 **Hostel Information:**\n• Boys & Girls hostels within campus\n• 24×7 security & CCTV\n• Wi-Fi enabled rooms\n• Mess facility with hygienic food\n\n💰 Hostel Fee: ₹12,000/semester (includes mess)\nFor admission: Contact Administrative Office\n📞 Hostel Warden (Boys): +91-86880 00006\n📞 Hostel Warden (Girls): +91-86880 00007" };
-  }
+  if(q.includes('hostel')||q.includes('accommodation')||q.includes('mess'))
+    return botMsg("🏠 **Hostel Info:**\n• Boys & Girls hostels on campus\n• 24×7 security · CCTV · Wi-Fi\n• Hygienic mess facility\n\n💰 ₹12,000/semester (mess included)\n📞 Boys Warden: +91-86880 00006\n📞 Girls Warden: +91-86880 00007");
 
-  // Exam schedule
-  if(q.includes('exam') && (q.includes('date') || q.includes('schedule') || q.includes('when'))) {
-    return { type:'text', text:"📝 **Exam Schedule 2024–25 (Even Semester):**\n• Mid-1 Exams: February 3–8, 2025\n• Mid-2 Exams: April 1–5, 2025\n• End Semester Exams: May 5 – May 30, 2025\n• Practical Exams: April 21 – May 2, 2025\n\n📋 Detailed timetable will be published on the exam cell notice board and NEC ERP portal 2 weeks before exams." };
-  }
+  // Exam dates
+  if(q.includes('exam')&&(q.includes('date')||q.includes('schedule')||q.includes('when')))
+    return botMsg("📝 **Exam Schedule 2024–25 (Even Sem):**\n• Mid-1: Feb 3–8, 2025\n• Mid-2: Apr 1–5, 2025\n• Practicals: Apr 21 – May 2\n• End Sem: May 5–30, 2025\n\nDetailed schedule on ERP & notice boards 2 weeks before.");
+
+  // About
+  if((q.includes('about')||q.includes('nec')||q.includes('college'))&&q.length<55)
+    return botMsg("🏛️ **Narayana Engineering College**\n📍 Gudur, Tirupati Dist., AP - 524101\n\n• Est: 2001 | Autonomous | JNTUA Affiliated\n• AICTE Approved | NAAC Accredited (A Grade)\n• 6 B.Tech + M.Tech + MBA\n• 3,200+ students | 120+ faculty\n• 95% placement rate");
 
   // Default
-  return { type:'text', text:"I'm sorry, I didn't quite catch that! 🤔 I can help you with:\n\n• **Attendance** — *'Attendance link for 2nd year CSE 2023–2027'*\n• **Timetables** — *'CSE 3rd year Sem 5 timetable'*\n• **Fees** — *'Exam fee due date'* or *'scholarship info'*\n• **Books** — *'AIML notes PDF'* or *'CSE question bank'*\n• **College info** — contact, placements, hostel\n\nTry asking one of the above!" };
+  return botMsg("I didn't understand that 🤔 I can help with:\n\n• *'CSE 2nd year attendance 2023–2027'*\n• *'AIML notes PDF'*\n• *'Exam fee due date'*\n• *'CSE Sem 5 timetable'*\n• *'Scholarship info'*\n• *'Contact details'*");
 }
 
-// ── CHAT UI ──
-let chatOpen = false;
-let chatHistory = [];
-
-function toggleChat() {
-  chatOpen = !chatOpen;
-  document.getElementById('chat-window').classList.toggle('open', chatOpen);
-  if(chatOpen && chatHistory.length === 0) {
-    setTimeout(() => addBotMessage("👋 Hi! I'm the **NEC College Assistant**. I have access to all college data — timetables, attendance portals, fees, books, and more.\n\nHow can I help you today?"), 300);
-  }
-}
-
-function addBotMessage(text, extra=null) {
-  const body = document.getElementById('chat-body');
-  const typing = document.createElement('div');
-  typing.className = 'msg bot';
-  typing.innerHTML = '<div class="bot-typing"><div class="dot"></div><div class="dot"></div><div class="dot"></div></div>';
-  body.appendChild(typing);
-  body.scrollTop = body.scrollHeight;
-  setTimeout(() => {
-    body.removeChild(typing);
-    const msg = document.createElement('div');
-    msg.className = 'msg bot';
-    const formattedText = text.replace(/\*\*(.*?)\*\*/g,'<strong>$1</strong>').replace(/\n/g,'<br>');
-    let html = `<div class="msg-bubble">${formattedText}</div>`;
-    if(extra) html += extra;
-    html += `<span class="msg-time">${getTime()}</span>`;
-    msg.innerHTML = html;
-    body.appendChild(msg);
-    body.scrollTop = body.scrollHeight;
-  }, 900);
-}
-
-function addUserMessage(text) {
-  const body = document.getElementById('chat-body');
-  const msg = document.createElement('div');
-  msg.className = 'msg user';
-  msg.innerHTML = `<div class="msg-bubble">${text}</div><span class="msg-time">${getTime()}</span>`;
-  body.appendChild(msg);
-  body.scrollTop = body.scrollHeight;
-}
-
-function getTime() {
-  return new Date().toLocaleTimeString('en-IN', {hour:'2-digit', minute:'2-digit'});
-}
-
-function renderResponse(resp) {
-  if(resp.type === 'text') {
-    let extra = '';
-    if(resp.action) {
-      extra = `<div style="margin-top:0.5rem"><button onclick="showPage('${resp.action.page}');toggleChat()" style="background:var(--teal);color:white;border:none;padding:0.4rem 0.9rem;border-radius:7px;cursor:pointer;font-size:0.8rem;font-weight:600;font-family:'DM Sans',sans-serif">${resp.action.label} →</button></div>`;
-    }
-    addBotMessage(resp.text, extra);
-  } else if(resp.type === 'links') {
-    let extra = resp.links.map(l => `<div class="chat-link-result"><h5>✅ ${l.branch} — ${l.year} ${l.sem}</h5><p>Batch: ${l.batch} | Section: ${l.section}</p><a href="${l.url}" target="_blank">🔗 Open Attendance Portal →</a></div>`).join('');
-    addBotMessage(resp.text, extra);
-  } else if(resp.type === 'books') {
-    let extra = resp.books.map(b => `<div class="chat-link-result"><h5>${b.icon} ${b.title}</h5><p>${b.author} · ${b.sem}</p><a href="${b.url}" target="_blank">📥 Download PDF →</a></div>`).join('');
-    addBotMessage(resp.text, extra);
-  }
-}
-
-function sendMessage() {
-  const input = document.getElementById('chat-input');
-  const text = input.value.trim();
-  if(!text) return;
-  addUserMessage(text);
-  input.value = '';
-  input.style.height = 'auto';
-  // Hide suggestions after first message
-  document.getElementById('chat-suggestions').style.display = 'none';
-  const resp = processQuery(text);
-  setTimeout(() => renderResponse(resp), 300);
-}
-
-function sendSuggestion(el) {
-  const text = el.textContent;
-  document.getElementById('chat-input').value = text;
-  sendMessage();
-}
-
-function handleKey(e) {
-  if(e.key === 'Enter' && !e.shiftKey) { e.preventDefault(); sendMessage(); }
-  // auto-resize
-  const ta = document.getElementById('chat-input');
-  ta.style.height = 'auto';
-  ta.style.height = Math.min(ta.scrollHeight, 100) + 'px';
-}
-
-function chatQuery(q) {
-  if(!chatOpen) toggleChat();
-  setTimeout(() => {
-    document.getElementById('chat-input').value = q;
-    sendMessage();
-  }, 400);
-  return false;
-}
-
-// Init
-renderAttLinks();
+/* ─── INIT ─── */
+ttRender();
+attRender();
+bkRenderAll();
 </script>
 </body>
 </html>
